@@ -9,4 +9,5 @@ Start-Sleep -Seconds 3
 
 # Start frontend in current window
 Write-Host "Starting Frontend..." -ForegroundColor Yellow
+Set-Location "frontend"
 npm run dev
