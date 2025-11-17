@@ -56,3 +56,56 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+/* Swiper overrides */
+.swiper {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.swiper-wrapper {
+  width: 100% !important;
+}
+
+.swiper-slide {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.accommodation-swiper {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 500px !important;
+  contain: layout !important;
+}
+
+
+
+/* Very visible pagination for testing */
+.swiper-pagination {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 10px !important;
+  text-align: center !important;
+}
+
+.swiper-pagination-bullet {
+  width: 15px !important;
+  height: 15px !important;
+  background: red !important;
+  opacity: 1 !important;
+  margin: 0 5px !important;
+  display: inline-block !important;
+  border-radius: 50% !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: blue !important;
+}
+
+/* Guesty widget container */
+#search-widget_IO312PWQ {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}

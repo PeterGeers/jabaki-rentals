@@ -6,7 +6,7 @@ Airbnb-style booking platform for JaBaKi properties in Amsterdam area.
 
 - Property listings with Google Drive images
 - Event promotion (Keukenhof, F1, ADE, Mysteryland)
-- Direct booking integration (Guesty ready)
+- Direct booking integration (Guesty under construction)
 - Platform links (Booking.com, Airbnb, VRBO)
 - Responsive Airbnb-inspired design
 

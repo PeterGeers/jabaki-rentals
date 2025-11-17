@@ -15,6 +15,12 @@ build/
 .env.test.local
 .env.production.local
 
+# My Authorizations
+credentials
+credentials.json
+token.pickle
+
+
 # Python
 venv312/
 __pycache__/

@@ -1,8 +1,8 @@
 # param([string]$message)
-$message = "V 0.2 STR rate prediction model and ai update for PDF Transaction processor"
-# Change to myAdmin project root directory
+$message = "Guesty widget installed, picture carrousel with swioper.js"
+# Change to the script's directory (project root)
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
-Set-Location (Join-Path $scriptPath "..")
+Set-Location $scriptPath
 
 # Verify we're in the correct directory (should contain .git folder)
 if (-not (Test-Path ".git")) {

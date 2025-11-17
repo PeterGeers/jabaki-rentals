@@ -1,5 +1,13 @@
 import { Routes, Route, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
+import { useEffect, useState, useRef } from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/effect-fade'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
+import imagesData from './data/images.json'
 
 function App() {
   const { t, i18n } = useTranslation()
@@ -55,57 +63,39 @@ const HomePage = () => {
   const { t } = useTranslation()
   return (
     <div>
-      <section style={{ background: '#f7fafc', padding: '5rem 0', textAlign: 'center' }}>
+      <section style={{ background: '#f7fafc', padding: '1rem 0', textAlign: 'center' }}>
         <div className="container">
-          <h2 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-            {t('Find your next stay')}
+          <h2 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '0.25rem' }}>
+            {t('Check availability')}
           </h2>
-          <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '2rem' }}>
-            {t('Discover amazing places to stay in Amsterdam and surroundings')}
+          <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '0.5rem' }}>
+            {t('of our accommodations on your desired dates')}
           </p>
-          <div style={{ 
-            background: 'white', 
-            padding: '0.5rem', 
-            borderRadius: '50px', 
-            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-            maxWidth: '600px',
-            margin: '0 auto',
-            display: 'flex',
-            gap: '0.5rem'
-          }}>
-            <input 
-              placeholder={t('Where are you going?')} 
-              style={{ 
-                border: 'none', 
-                padding: '1rem 1.5rem', 
-                flex: 1, 
-                outline: 'none' 
-              }} 
-            />
-            <input 
-              type="date" 
-              style={{ 
-                border: 'none', 
-                padding: '1rem 1.5rem', 
-                outline: 'none' 
-              }} 
-            />
-            <button className="btn btn-primary" style={{ borderRadius: '50px', padding: '1rem 2rem' }}>
-              {t('Search')}
-            </button>
-          </div>
+          <iframe 
+            src="/guesty-widget.html" 
+            title="Booking Widget"
+            style={{ 
+              width: '100%', 
+              maxWidth: '600px', 
+              height: '240px', 
+              border: 'none', 
+              borderRadius: '12px',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+              margin: '0 auto'
+            }}
+          />
         </div>
       </section>
       
-      <section style={{ padding: '4rem 0' }}>
+      <section style={{ padding: '2rem 0' }}>
         <div className="container">
-          <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '2rem' }}>
-            {t('Upcoming Events')}
+          <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+            {t('Our Accommodations')}
           </h3>
           <div className="grid grid-3">
-            <EventCard title={t('Keukenhof Gardens')} date="Mar - May 2024" />
-            <EventCard title={t('Amsterdam Dance Event')} date="Oct 2024" />
-            <EventCard title={t('Dutch F1 Grand Prix')} date="Aug 2024" />
+            <AccommodationCard name={t('Garden House')} description={t('Cozy house with beautiful garden terrace')} />
+            <AccommodationCard name={t('Green Studio')} description={t('Modern studio with scenic views')} />
+            <AccommodationCard name={t('Red Studio')} description={t('Stylish studio with rooftop terrace')} />
           </div>
         </div>
       </section>
@@ -146,6 +136,140 @@ const EventsPage = () => {
           <EventCard title={t('Mysteryland')} date="Aug 2024" />
         </div>
       </div>
+    </div>
+  )
+}
+
+const AccommodationCard = ({ name, description }: { name: string; description: string }) => {
+  const { t } = useTranslation()
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [autoplayEnabled, setAutoplayEnabled] = useState(true)
+  const swiperRef = useRef(null)
+  
+  const getImagesWithNames = () => {
+    if (name.includes('Garden') || name.includes('Tuin')) {
+      return Object.entries(imagesData.properties.gardenhouse)
+    }
+    if (name.includes('Green') || name.includes('Groene')) {
+      return Object.entries(imagesData.properties['green-studio'])
+    }
+    if (name.includes('Red') || name.includes('Rode')) {
+      return Object.entries(imagesData.properties['red-studio'])
+    }
+    return []
+  }
+  
+  const imagesWithNames = getImagesWithNames()
+  const currentImageName = imagesWithNames[currentImageIndex]?.[0] || ''
+  
+  return (
+    <div className="card" style={{ maxWidth: '100%', width: '100%' }}>
+      <div style={{ 
+        height: '500px', 
+        width: '100%',
+        borderRadius: '8px', 
+        marginBottom: '1rem',
+        overflow: 'hidden',
+        position: 'relative'
+      }}>
+        {imagesWithNames.length > 0 ? (
+          <div style={{ width: '100%', height: '100%', maxWidth: '100%', overflow: 'hidden' }}>
+            <Swiper
+              modules={[Autoplay]}
+              autoplay={autoplayEnabled ? { 
+                delay: 4000, 
+                disableOnInteraction: false
+              } : false}
+              loop={true}
+              className="accommodation-swiper"
+              style={{ height: '500px', width: '100%', maxWidth: '100%' }}
+              onSlideChange={(swiper) => setCurrentImageIndex(swiper.activeIndex % imagesWithNames.length)}
+              onSwiper={(swiper) => { swiperRef.current = swiper }}
+              speed={300}
+              allowTouchMove={true}
+            >
+            {imagesWithNames.map(([imageName, imageId], index) => (
+              <SwiperSlide key={index} style={{ width: '100%', height: '100%' }}>
+                <img 
+                  src={`https://lh3.googleusercontent.com/d/${imageId}=w400-h300-c`}
+                  alt={`${name} ${imageName}`}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    display: 'block'
+                  }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px', gap: '5px' }}>
+            {imagesWithNames.map((_, index) => (
+              <div
+                key={index}
+                onClick={() => {
+                  const swiper = document.querySelector('.accommodation-swiper').swiper
+                  swiper.slideToLoop(index)
+                }}
+                style={{
+                  width: '10px',
+                  height: '10px',
+                  borderRadius: '50%',
+                  background: currentImageIndex === index ? '#FF385C' : '#ccc',
+                  cursor: 'pointer',
+                  transition: 'background 0.3s'
+                }}
+              />
+            ))}
+          </div>
+          </div>
+        ) : (
+          <div style={{ 
+            height: '100%',
+            background: '#f0f0f0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: '#666'
+          }}>
+            Image Placeholder
+          </div>
+        )}
+      </div>
+      {imagesWithNames.length > 0 && (
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '10px 0', gap: '8px' }}>
+          {imagesWithNames.map((_, index) => (
+            <div
+              key={index}
+              onClick={() => {
+                if (swiperRef.current) {
+                  setAutoplayEnabled(false)
+                  swiperRef.current.slideToLoop(index)
+                }
+              }}
+              style={{
+                width: '12px',
+                height: '12px',
+                borderRadius: '50%',
+                background: currentImageIndex === index ? '#FF385C' : '#ddd',
+                cursor: 'pointer',
+                border: '1px solid #999'
+              }}
+            />
+          ))}
+        </div>
+      )}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+        <h4 style={{ fontWeight: 'bold', fontSize: '1.125rem', margin: 0 }}>
+          {name}
+        </h4>
+        {currentImageName && (
+          <span style={{ fontSize: '0.875rem', color: '#888', fontStyle: 'italic' }}>
+            {t(currentImageName)}
+          </span>
+        )}
+      </div>
+      <p style={{ color: '#666', marginBottom: '1rem' }}>{description}</p>
     </div>
   )
 }
