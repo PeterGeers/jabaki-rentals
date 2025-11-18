@@ -179,7 +179,7 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
               loop={true}
               className="accommodation-swiper"
               style={{ height: '100%', width: '100%', maxWidth: '100%' }}
-              onSlideChange={(swiper) => setCurrentImageIndex(swiper.activeIndex % imagesWithNames.length)}
+              onSlideChange={(swiper) => setCurrentImageIndex(typeof swiper.realIndex === 'number' ? swiper.realIndex : (swiper.activeIndex % (imagesWithNames.length || 1)))}
               onSwiper={(swiper) => { swiperRef.current = swiper }}
               speed={300}
               allowTouchMove={true}
@@ -204,8 +204,7 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
               <div
                 key={index}
                 onClick={() => {
-                  const swiper = document.querySelector('.accommodation-swiper').swiper
-                  swiper.slideToLoop(index)
+                  if (swiperRef.current) swiperRef.current.slideToLoop(index)
                 }}
                 style={{
                   width: '10px',
