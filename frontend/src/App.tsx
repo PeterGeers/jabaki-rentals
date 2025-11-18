@@ -163,18 +163,19 @@ const AccommodationCard = ({ name, description }: { name: string; description: s
   const currentImageName = imagesWithNames[currentImageIndex]?.[0] || ''
   
   return (
-    <div className="card" style={{ maxWidth: '100%', width: '100%' }}>
+      <div className="card" style={{ maxWidth: '100%', width: '100%' }}>
       <div style={{ 
-        height: '500px', 
         width: '100%',
         borderRadius: '8px', 
         marginBottom: '1rem',
         overflow: 'hidden',
-        position: 'relative'
+        position: 'relative',
+        aspectRatio: '16/9',
+        maxHeight: '500px'
       }}>
         {imagesWithNames.length > 0 ? (
           <div style={{ width: '100%', height: '100%', maxWidth: '100%', overflow: 'hidden' }}>
-            <Swiper
+              <Swiper
               modules={[Autoplay]}
               autoplay={autoplayEnabled ? { 
                 delay: 4000, 
@@ -182,7 +183,7 @@ const AccommodationCard = ({ name, description }: { name: string; description: s
               } : false}
               loop={true}
               className="accommodation-swiper"
-              style={{ height: '500px', width: '100%', maxWidth: '100%' }}
+              style={{ height: '100%', width: '100%', maxWidth: '100%' }}
               onSlideChange={(swiper) => setCurrentImageIndex(swiper.activeIndex % imagesWithNames.length)}
               onSwiper={(swiper) => { swiperRef.current = swiper }}
               speed={300}
@@ -191,7 +192,7 @@ const AccommodationCard = ({ name, description }: { name: string; description: s
             {imagesWithNames.map(([imageName, imageId], index) => (
               <SwiperSlide key={index} style={{ width: '100%', height: '100%' }}>
                 <img 
-                  src={`https://lh3.googleusercontent.com/d/${imageId}=w400-h300-c`}
+                  src={`https://lh3.googleusercontent.com/d/${imageId}=s0`}
                   alt={`${name} ${imageName}`}
                   style={{
                     width: '100%',
