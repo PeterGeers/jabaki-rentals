@@ -177,7 +177,7 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
                 disableOnInteraction: false
               } : false}
               loop={true}
-              className="accommodation-swiper"
+              className={`accommodation-swiper-${id}`}
               style={{ height: '100%', width: '100%', maxWidth: '100%' }}
               onSlideChange={(swiper) => setCurrentImageIndex(typeof swiper.realIndex === 'number' ? swiper.realIndex : (swiper.activeIndex % (imagesWithNames.length || 1)))}
               onSwiper={(swiper) => { swiperRef.current = swiper }}
@@ -199,6 +199,8 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
               </SwiperSlide>
             ))}
           </Swiper>
+          {/* Debug: warn if no images */}
+          {imagesWithNames.length === 0 && console.warn(`Accommodation ${id} has no images`) }
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px', gap: '5px' }}>
             {imagesWithNames.map((_, index) => (
               <div
