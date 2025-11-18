@@ -156,6 +156,7 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
   
   const imagesWithNames = getImagesWithNames()
   const currentImageName = imagesWithNames[currentImageIndex]?.[0] || ''
+  const localizedNoImage = t('no-image') || 'No image'
   const propertyImages = imagesData.properties[id] || {}
   const warnings: string[] = []
   if (!('voordeur' in propertyImages)) {
@@ -227,15 +228,12 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
           </div>
           </div>
         ) : (
-          <div style={{ 
-            height: '100%',
-            background: '#f0f0f0',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#666'
-          }}>
-            Image Placeholder
+          <div style={{ width: '100%', height: '100%', maxWidth: '100%', overflow: 'hidden' }}>
+            <img
+              src="/placeholder.jpg"
+              alt={localizedNoImage}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
           </div>
         )}
       </div>
@@ -266,11 +264,9 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
         <h4 style={{ fontWeight: 'bold', fontSize: '1.125rem', margin: 0 }}>
           {name}
         </h4>
-        {currentImageName && (
-          <span style={{ fontSize: '0.875rem', color: '#888', fontStyle: 'italic' }}>
-            {t(currentImageName)}
-          </span>
-        )}
+        <span style={{ fontSize: '0.875rem', color: '#888', fontStyle: 'italic' }}>
+          {currentImageName ? t(currentImageName) : localizedNoImage}
+        </span>
       </div>
       {warnings.length > 0 && (
         <div style={{ color: '#b91c1c', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
