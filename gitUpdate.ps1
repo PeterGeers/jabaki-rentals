@@ -1,5 +1,5 @@
 # param([string]$message)
-$message = "Guesty widget installed, picture carrousel with swioper.js"
+$message = "Evenementen in de omgeving toegevoegd"
 # Change to the script's directory (project root)
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $scriptPath

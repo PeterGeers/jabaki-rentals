@@ -6,6 +6,23 @@
     <title>Guesty Booking Widget</title>
     <style>
         body { margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        
+        /* Override Guesty search button color to match theme */
+        button[type="submit"],
+        .search-button,
+        .btn-primary,
+        input[type="submit"] {
+            background-color: #FF385C !important;
+            border-color: #FF385C !important;
+        }
+        
+        button[type="submit"]:hover,
+        .search-button:hover,
+        .btn-primary:hover,
+        input[type="submit"]:hover {
+            background-color: #E31C5F !important;
+            border-color: #E31C5F !important;
+        }
     </style>
 </head>
 <body>
@@ -14,5 +31,30 @@
             !function(e,t,a,n,c,r){function s(t){e.console.log("[Guesty Embedded Widget]:",t)}var i,d,l,o,y,m,g,h,p,u;n&&(i=n,d=t.getElementsByTagName("head")[0],(l=t.createElement("link")).rel="stylesheet",l.type="text/css",l.href=i,l.media="all",d.appendChild(l)),o=function(){try{e[a].create(r).catch(function(e){s(e.message)})}catch(e){s(e.message)}},h=!1,y=c,m=function(){h||this.readyState&&"complete"!=this.readyState||(h=!0,o())},(g=t.createElement("script")).type="text/javascript",g.src=y,g.async="true",g.onload=g.onreadystatechange=m,p=g,(u=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,u)}(window,document,"GuestySearchBarWidget","https://s3.amazonaws.com/guesty-frontend-production/search-bar-production.css","https://s3.amazonaws.com/guesty-frontend-production/search-bar-production.js",{"siteUrl":"jabaki.guestybookings.com"});
         </script>
     </div>
+    
+    <script>
+        // Wait for Guesty widget to load and override button colors
+        function overrideButtonColors() {
+            const buttons = document.querySelectorAll('button, input[type="submit"], .btn, [class*="button"]');
+            buttons.forEach(button => {
+                if (button.textContent.toLowerCase().includes('search') || 
+                    button.type === 'submit' ||
+                    button.className.includes('btn')) {
+                    button.style.setProperty('background-color', '#FF385C', 'important');
+                    button.style.setProperty('border-color', '#FF385C', 'important');
+                    button.style.setProperty('color', 'white', 'important');
+                }
+            });
+        }
+        
+        // Run immediately and after delays to catch dynamically loaded content
+        setTimeout(overrideButtonColors, 1000);
+        setTimeout(overrideButtonColors, 3000);
+        setTimeout(overrideButtonColors, 5000);
+        
+        // Also run when DOM changes (for dynamic content)
+        const observer = new MutationObserver(overrideButtonColors);
+        observer.observe(document.body, { childList: true, subtree: true });
+    </script>
 </body>
 </html>

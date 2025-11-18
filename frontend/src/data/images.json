@@ -1,37 +1,26 @@
 {
     "properties": {
         "gardenhouse": {
-            "slaapbank": "1ixFHDSto4Atmmdi3ITexVrrdlaHjyvfb",
-            "sleutelkastje": "1RsvJCU6FQFYMrbSj3oM3PcRTqJ5dPx_K",
-            "douche": "1ERjgpYvazE3DL-WYbcQRJIIT1J0Ogy5W",
-            "eethoek": "1HW9hIt735s3XNJheI9Wr74fL7gaWwKl0",
-            "keuken": "1QOeMdrhIpwpAXd-lOoL3xkOt2vUXhrUC",
-            "terras": "14AkF7SLzEavEGhb2MKLmxtbusEtuh0xQ",
-            "slaapkamer": "1iw9FljD6ZNTd2qYIrn8o4Pi1rUMEg9Dt"
+            "voordeur": "11l_RYZVumB_ARdBefM5n88rXdvyGUqKO",
+            "bedden": "1BTKt2t3phsGKvhZIw5ZsnL1khK36EMwf",
+            "badkamer": "1fZTRhvV5JNuRxQ9YNoMuXPGCnaxh42KL",
+            "keukenblok": "1-j0Szo9_VjG9rHXz1z8fU_eswRcl_kNE",
+            "eethoek": "1g0O7e1CSCx_fvwFkBakrzTpRnRn1vUqN",
+            "slaapbank": "1e8rPQ7pwSY1nSpdRehHu7tKzbxikdgHi"
         },
         "red-studio": {
-            "trapenvoordeur": "1mPKZgMjtp2oU0BQ2y1wbdO0kEZvstwoj",
-            "voordeur": "1a21NKmxmX6GKdVUyiNI8LL3f5h4tvEKR",
-            "bedden": "15WcRuEDRuF_OCxFjvnpykrdCaIV3w3q8",
-            "dakterrasb": "1i8V38OyoTeixpESDyPw9xlAzEL5_EJCL",
-            "zithoek": "1XbIgbY2MzfEbR3komknklCgtrwXweX4A",
-            "toilet": "1tW1zqa8AT8cRcTMfH32hPqPFgiMPzWsw",
-            "tvset": "14Oz0O6-pdC-nvX4kRnmrHxzcwQiEIdaO",
-            "keukenkast": "1xZBhlxs2VoFbybqJeyd8-SYibrjpOhzE",
-            "uitzichta": "1mrh9DkTAHeswIHkZ5VNJzu3Ipuw74s61"
+            "voordeur": "10xPuuhHx4GZS1dt9chYJ95jfq6cJGAFt",
+            "bedden": "1rAAXfSb_TArBtdhVLraX4-z8HWd6Smo1",
+            "badkamer": "16EZqjDmvMhdgd9MOZjAllgdYbZT-n1MG",
+            "keukenblok": "1gzGA3G3IfKzFmQnsGD5DB5XKN5-Q797w",
+            "zithoek": "1sWSyGCNLGKYcKFc4BoKEGidK7F-VytMg"
         },
         "green-studio": {
-            "voordeur": "1xKZ98wzoze_80aEfxs37C6NXRvKzW9aC",
-            "terras": "1u0h5-vEqqjCUXQtM77ZPfpBlQDXog4R7",
-            "bedden": "1MH4jCme5zZcpHZKF9Zmp-896o12tfLOX",
-            "tv-en-kast": "1HCzVbCy2nSbq-UtinbsRpb9kUg-ievUK",
-            "badkamerdeur": "16QlL58fCV9n8To3Qcvum2mLAvYt_kaHu",
-            "toilet": "1OACOq4SMbokJtrYABA5ONx8xOGXda48G",
-            "zithoeka": "1mFxOKLHKvvSeNhpbnibUQ8YlkuvcdZ92",
-            "uitzicht": "1405xg1bttSlkk6J99BJJE37KUF2byhU4",
-            "zithoek": "1dAqQLyam2aRdVJMdeCbwO8JUyalZ-9o4",
-            "terrasa": "14Ik6sJGk8HjLGT1O8Skhm-tvLu-lLu73",
-            "keuken": "1RUZyEAPyHUdxF5EMNgrjjKsyYuL0rjq2"
+            "voordeur": "1cHuSN1x4ZFdF5fT8qArBJSoL512v2MjN",
+            "bedden": "1m8yLzhfGLNI5U2L6gmeh5-l-ywKi7dwn",
+            "badkamer": "1lAQaGvxoEkn-Vt1tNi1RNgWSkN8UCmaq",
+            "keukenblok": "11qxFjIIvS4wzNvvxrwcIXEKmpssUQsqN",
+            "zithoek": "1eCZoEOW6Mcyllwi4DpDTBMlq8bpr3kZ6"
         },
         "algemeen": {
             "jabakilogo": "1wk5hr61xFkXbXhHji178-eJ4xE3n99U4"

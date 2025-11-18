@@ -13,7 +13,7 @@ def generate_lh3_url(file_id, size=800):
     file_id = re.sub(r'.*[/=]([a-zA-Z0-9_-]+).*', r'\1', file_id)
     
     # Generate lh3 URL
-    lh3_url = f"https://lh3.googleusercontent.com/d/{file_id}=w{size}-h{size}-c"
+    lh3_url = f"https://lh3.googleusercontent.com/d/{file_id}"
     
     return lh3_url
 
