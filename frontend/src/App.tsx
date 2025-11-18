@@ -93,9 +93,9 @@ const HomePage = () => {
             {t('Our Accommodations')}
           </h3>
           <div className="grid grid-3">
-            <AccommodationCard name={t('Garden House')} description={t('Cozy house with beautiful garden terrace')} />
-            <AccommodationCard name={t('Green Studio')} description={t('Modern studio with scenic views')} />
-            <AccommodationCard name={t('Red Studio')} description={t('Stylish studio with rooftop terrace')} />
+            <AccommodationCard id="gardenhouse" name={t('Garden House')} description={t('Cozy house with beautiful garden terrace')} />
+            <AccommodationCard id="green-studio" name={t('Green Studio')} description={t('Modern studio with scenic views')} />
+            <AccommodationCard id="red-studio" name={t('Red Studio')} description={t('Stylish studio with rooftop terrace')} />
           </div>
         </div>
       </section>
@@ -140,22 +140,17 @@ const EventsPage = () => {
   )
 }
 
-const AccommodationCard = ({ name, description }: { name: string; description: string }) => {
+const AccommodationCard = ({ id, name, description }: { id: string; name: string; description: string }) => {
   const { t } = useTranslation()
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [autoplayEnabled, setAutoplayEnabled] = useState(true)
   const swiperRef = useRef(null)
   
   const getImagesWithNames = () => {
-    if (name.includes('Garden') || name.includes('Tuin')) {
-      return Object.entries(imagesData.properties.gardenhouse)
-    }
-    if (name.includes('Green') || name.includes('Groene')) {
-      return Object.entries(imagesData.properties['green-studio'])
-    }
-    if (name.includes('Red') || name.includes('Rode')) {
-      return Object.entries(imagesData.properties['red-studio'])
-    }
+    // Use stable id for lookup so translations don't affect which images load
+    if (id === 'gardenhouse') return Object.entries(imagesData.properties.gardenhouse)
+    if (id === 'green-studio') return Object.entries(imagesData.properties['green-studio'])
+    if (id === 'red-studio') return Object.entries(imagesData.properties['red-studio'])
     return []
   }
   
@@ -170,7 +165,7 @@ const AccommodationCard = ({ name, description }: { name: string; description: s
         marginBottom: '1rem',
         overflow: 'hidden',
         position: 'relative',
-        aspectRatio: '16/9',
+        height: 'min(500px, 60vh)',
         maxHeight: '500px'
       }}>
         {imagesWithNames.length > 0 ? (
