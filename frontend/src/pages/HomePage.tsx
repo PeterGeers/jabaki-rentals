@@ -1,4 +1,5 @@
 import { Box, Container, Text, Button, SimpleGrid, Image, VStack, HStack } from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 import SearchBar from '../components/SearchBar'
 import ListingCard from '../components/ListingCard'
@@ -80,6 +81,7 @@ const HomePage = () => {
 }
 
 const AccommodationCard = ({ id, name, description }: { id: string; name: string; description: string }) => {
+  const { t } = useTranslation()
   // Prefer 'voordeur' if available, otherwise pick first image in the property
   const propertyImages = imagesData.properties[id] || {}
   let imageId = ''
@@ -90,6 +92,9 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
     imageId = vals.length > 0 ? vals[0] as string : ''
   }
   const { imageUrl, loading } = useGoogleImage(imageId)
+
+  const warnings: string[] = []
+  if (!imageId) warnings.push(`${t(name)}: ${t('voordeur') || 'voordeur'} niet zichtbaar`)
 
   return (
     <Box bg="white" borderRadius="lg" shadow="sm" overflow="hidden">
@@ -104,6 +109,13 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
       <Box p={6}>
         <Text fontWeight="bold" fontSize="lg" mb={2}>{name}</Text>
         <Text color="gray.600">{description}</Text>
+        {warnings.length > 0 && (
+          <Box mt={3} color="red.600" fontSize="sm">
+            {warnings.map((w, i) => (
+              <div key={i}>{w}</div>
+            ))}
+          </Box>
+        )}
       </Box>
     </Box>
   )

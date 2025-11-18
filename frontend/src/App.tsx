@@ -156,6 +156,12 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
   
   const imagesWithNames = getImagesWithNames()
   const currentImageName = imagesWithNames[currentImageIndex]?.[0] || ''
+  const propertyImages = imagesData.properties[id] || {}
+  const warnings: string[] = []
+  if (!('voordeur' in propertyImages)) {
+    // Prefer localized text if available
+    warnings.push(`${t(name)}: ${t('voordeur') || 'voordeur'} niet zichtbaar`)
+  }
   
   return (
       <div className="card" style={{ maxWidth: '100%', width: '100%' }}>
@@ -266,6 +272,13 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
           </span>
         )}
       </div>
+      {warnings.length > 0 && (
+        <div style={{ color: '#b91c1c', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
+          {warnings.map((w, i) => (
+            <div key={i}>{w}</div>
+          ))}
+        </div>
+      )}
       <p style={{ color: '#666', marginBottom: '1rem' }}>{description}</p>
     </div>
   )
