@@ -58,19 +58,19 @@ const HomePage = () => {
           <Text fontSize="3xl" fontWeight="bold" mb={8}>Our Accommodations</Text>
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
             <AccommodationCard 
+              id="gardenhouse"
               name="Garden House" 
               description="Cozy house with beautiful garden terrace"
-              imageId={imagesData.properties.gardenhouse.terras}
             />
             <AccommodationCard 
+              id="green-studio"
               name="Green Studio" 
               description="Modern studio with scenic views"
-              imageId={imagesData.properties['green-studio'].uitzicht}
             />
             <AccommodationCard 
+              id="red-studio"
               name="Red Studio" 
               description="Stylish studio with rooftop terrace"
-              imageId={imagesData.properties['red-studio'].dakterrasb}
             />
           </SimpleGrid>
         </Container>
@@ -79,9 +79,18 @@ const HomePage = () => {
   )
 }
 
-const AccommodationCard = ({ name, description, imageId }: { name: string; description: string; imageId: string }) => {
+const AccommodationCard = ({ id, name, description }: { id: string; name: string; description: string }) => {
+  // Prefer 'voordeur' if available, otherwise pick first image in the property
+  const propertyImages = imagesData.properties[id] || {}
+  let imageId = ''
+  if ('voordeur' in propertyImages) {
+    imageId = propertyImages['voordeur']
+  } else {
+    const vals = Object.values(propertyImages)
+    imageId = vals.length > 0 ? vals[0] as string : ''
+  }
   const { imageUrl, loading } = useGoogleImage(imageId)
-  
+
   return (
     <Box bg="white" borderRadius="lg" shadow="sm" overflow="hidden">
       <Image 
