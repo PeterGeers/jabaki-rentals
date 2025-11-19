@@ -1,5 +1,5 @@
 # param([string]$message)
-$message = "Evenementen in de omgeving toegevoegd"
+$message = "Goed om te weten pagina toegevoegd"
 # Change to the script's directory (project root)
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $scriptPath

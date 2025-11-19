@@ -13,6 +13,7 @@ const Header = () => {
         </Link>
         
         <HStack spacing={8} display={{ base: 'none', md: 'flex' }}>
+          <Link to="/"><Text _hover={{ color: 'red.500' }}>Home</Text></Link>
           <Link to="/listings"><Text _hover={{ color: 'red.500' }}>Listings</Text></Link>
           <Link to="/events"><Text _hover={{ color: 'red.500' }}>Events</Text></Link>
         </HStack>

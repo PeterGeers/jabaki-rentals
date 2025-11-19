@@ -8,6 +8,7 @@ import 'swiper/css/effect-fade'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
 import imagesData from './data/images.json'
+import GoodToKnowPage from './pages/GoodToKnowPage'
 
 function App() {
   const { t, i18n } = useTranslation()
@@ -35,12 +36,26 @@ function App() {
             <LogoImage />
           </Link>
           <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+            <Link to="/" style={{ textDecoration: 'none', color: '#333' }}>{t('Home')}</Link>
             <Link to="/events" style={{ textDecoration: 'none', color: '#333' }}>{t('Events')}</Link>
-            <div style={{ display: 'flex', gap: '0.5rem', marginLeft: '1rem' }}>
-              <button onClick={() => changeLanguage('en')} style={{ padding: '0.25rem 0.5rem', border: '1px solid #ccc', borderRadius: '4px', background: 'white', cursor: 'pointer' }}>EN</button>
-              <button onClick={() => changeLanguage('nl')} style={{ padding: '0.25rem 0.5rem', border: '1px solid #ccc', borderRadius: '4px', background: 'white', cursor: 'pointer' }}>NL</button>
-              <button onClick={() => changeLanguage('de')} style={{ padding: '0.25rem 0.5rem', border: '1px solid #ccc', borderRadius: '4px', background: 'white', cursor: 'pointer' }}>DE</button>
-            </div>
+            <Link to="/good-to-know" style={{ textDecoration: 'none', color: '#333' }}>{t('Good to know')}</Link>
+            <select 
+              value={i18n.language} 
+              onChange={(e) => changeLanguage(e.target.value)}
+              style={{ 
+                padding: '0.5rem', 
+                border: '1px solid #ccc', 
+                borderRadius: '4px', 
+                background: 'white', 
+                cursor: 'pointer',
+                marginLeft: '1rem',
+                fontSize: '0.9rem'
+              }}
+            >
+              <option value="en">🇬🇧 EN</option>
+              <option value="nl">🇳🇱 NL</option>
+              <option value="de">🇩🇪 DE</option>
+            </select>
           </nav>
         </div>
       </header>
@@ -48,6 +63,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
+        <Route path="/good-to-know" element={<GoodToKnowPage />} />
       </Routes>
     </div>
   )
@@ -57,27 +73,54 @@ const HomePage = () => {
   const { t } = useTranslation()
   return (
     <div>
-      <section style={{ background: '#f7fafc', padding: '1rem 0', textAlign: 'center' }}>
+      <section style={{ background: '#f7fafc', padding: '1rem 0' }}>
         <div className="container">
-          <h2 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '0.25rem' }}>
+          <h2 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '0.25rem', textAlign: 'center' }}>
             {t('Check availability')}
           </h2>
-          <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '0.5rem' }}>
+          <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '0.5rem', textAlign: 'center' }}>
             {t('of our accommodations on your desired dates')}
           </p>
-          <iframe 
-            src="/guesty-widget.html" 
-            title="Booking Widget"
-            style={{ 
-              width: '100%', 
-              maxWidth: '600px', 
-              height: '240px', 
-              border: 'none', 
+          <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+            <iframe 
+              src="/guesty-widget.html" 
+              title="Booking Widget"
+              style={{ 
+                flex: '1 1 600px', 
+                height: '240px', 
+                border: 'none', 
+                borderRadius: '12px',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+              }}
+            />
+            <div style={{
+              background: 'white',
+              padding: '1.5rem',
               borderRadius: '12px',
               boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              margin: '0 auto'
-            }}
-          />
+              flex: '1 1 400px',
+              height: '240px',
+              overflow: 'auto'
+            }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem', color: '#333' }}>
+                {t('Interesting places to visit')}
+              </h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.9rem', lineHeight: '1.3' }}>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Amsterdam City Center')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Schiphol Airport')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Amsterdam beach (Zandvoort)')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Langevelderslag (Beach)')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Haarlem City Center')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Bergen (artist village)')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('The Bazaar Beverwijk')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Alkmaar Cheese')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Linneaushof Bennebroek')}</li>
+                <li style={{ marginTop: '0.5rem', fontWeight: 'bold', color: '#FF385C' }}>{t('During april and may')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Keukenhof')}</li>
+                <li style={{ marginBottom: '0.1rem' }}>• {t('Flowerbulb route')}</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
       
