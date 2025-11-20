@@ -1,54 +1,43 @@
-from flask import Flask, request, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import re
 
 app = Flask(__name__)
 CORS(app)
 
-def generate_lh3_url(file_id, size=800):
-    """
-    Generate lh3.googleusercontent.com URL from Google Drive file ID
-    """
+def generate_lh3_url(file_id):
+    """Generate lh3.googleusercontent.com URL from Google Drive file ID"""
     # Clean the file ID (remove any URL parts if present)
-    file_id = re.sub(r'.*[/=]([a-zA-Z0-9_-]+).*', r'\1', file_id)
+    clean_file_id = re.sub(r'.*[/=]([a-zA-Z0-9_-]+).*', r'\1', file_id)
     
-    # Generate lh3 URL
-    lh3_url = f"https://lh3.googleusercontent.com/d/{file_id}"
-    
-    return lh3_url
+    # Generate lh3 URL without size parameter
+    return f"https://lh3.googleusercontent.com/d/{clean_file_id}"
 
 @app.route('/api/generate-lh3', methods=['POST'])
-def api_generate_lh3():
-    try:
-        data = request.get_json()
-        file_id = data.get('fileId')
-        
-        if not file_id:
-            return jsonify({'error': 'File ID is required'}), 400
-        
-        size = data.get('size', 800)
-        lh3_url = generate_lh3_url(file_id, size)
-        
-        return jsonify({
-            'file_id': file_id,
-            'lh3_url': lh3_url,
-            'size': size
-        })
+def generate_lh3():
+    """Generate lh3 URL from Google Drive file ID"""
+    data = request.get_json()
+    file_id = data.get('fileId')
     
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+    if not file_id:
+        return jsonify({'error': 'File ID is required'}), 400
+    
+    url = generate_lh3_url(file_id)
+    return jsonify({'url': url})
 
 @app.route('/api/google-image/<file_id>')
-def get_google_image(file_id):
-    try:
-        lh3_url = generate_lh3_url(file_id)
-        return jsonify({
-            'file_id': file_id,
-            'lh3_url': lh3_url,
-            'url': lh3_url
-        })
-    except Exception as e:
-        return jsonify({'error': str(e)}), 500
+def get_google_image_url(file_id):
+    """Get image URL for file ID"""
+    url = generate_lh3_url(file_id)
+    return jsonify({'url': url})
+
+@app.route('/')
+def root():
+    return jsonify({'message': 'JaBaKi API is running', 'endpoints': ['/health', '/api/google-image/<file_id>', '/api/generate-lh3']})
+
+@app.route('/health')
+def health_check():
+    return jsonify({'status': 'healthy'})
 
 if __name__ == '__main__':
-    app.run(debug=True, port=8000)
+    app.run(debug=True, host='0.0.0.0', port=8000)

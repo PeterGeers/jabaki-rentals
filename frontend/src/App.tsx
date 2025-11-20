@@ -1,14 +1,10 @@
 import { Routes, Route, Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useEffect, useState, useRef } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Autoplay, Pagination } from 'swiper/modules'
-import 'swiper/css'
-import 'swiper/css/effect-fade'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
+import { useEffect, useState } from 'react'
+
 import imagesData from './data/images.json'
 import GoodToKnowPage from './pages/GoodToKnowPage'
+import { getGoogleImageUrl } from './utils/googleImages'
 
 function App() {
   const { t, i18n } = useTranslation()
@@ -65,6 +61,39 @@ function App() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/good-to-know" element={<GoodToKnowPage />} />
       </Routes>
+      
+      <footer style={{
+        background: '#333',
+        color: 'white',
+        padding: '2rem 0',
+        marginTop: '3rem'
+      }}>
+        <div className="container" style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1rem'
+        }}>
+          <div style={{ flex: '1', minWidth: '250px' }}>
+            <p style={{ margin: '0', fontSize: '0.9rem' }}>
+              Beemsterstraat 3, 2131 ZA Hoofddorp | Tel: +31621893861 | Email: <a href="mailto:peter@jabaki.nl" style={{ color: '#FF385C' }}>peter@jabaki.nl</a> | Website: <a href="https://www.jabaki.nl" target="_blank" rel="noopener noreferrer" style={{ color: '#FF385C' }}>www.jabaki.nl</a>
+            </p>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <a href="https://www.facebook.com/JaBaKigastenverblijf/" target="_blank" rel="noopener noreferrer" style={{
+              color: '#1877F2',
+              textDecoration: 'none',
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
@@ -73,14 +102,24 @@ const HomePage = () => {
   const { t } = useTranslation()
   return (
     <div>
+      <section style={{ padding: '2rem 0' }}>
+        <div className="container">
+          <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
+            {t('Our Accommodations')}
+          </h3>
+          <div className="grid grid-3">
+            <AccommodationCard id="gardenhouse" name={t('Garden House')} description={t('Cozy house with beautiful garden terrace')} />
+            <AccommodationCard id="green-studio" name={t('Green Studio')} description={t('Modern studio with scenic views')} />
+            <AccommodationCard id="red-studio" name={t('Red Studio')} description={t('Stylish studio with rooftop terrace')} />
+          </div>
+        </div>
+      </section>
+      
       <section style={{ background: '#f7fafc', padding: '1rem 0' }}>
         <div className="container">
-          <h2 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '0.25rem', textAlign: 'center' }}>
+          <h2 style={{ fontSize: '3rem', fontWeight: 'bold', marginBottom: '1rem', textAlign: 'center' }}>
             {t('Check availability')}
           </h2>
-          <p style={{ fontSize: '1.25rem', color: '#666', marginBottom: '0.5rem', textAlign: 'center' }}>
-            {t('of our accommodations on your desired dates')}
-          </p>
           <div style={{ display: 'flex', gap: '2rem', alignItems: 'flex-start', flexWrap: 'wrap' }}>
             <iframe 
               src="/guesty-widget.html" 
@@ -93,46 +132,7 @@ const HomePage = () => {
                 boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
               }}
             />
-            <div style={{
-              background: 'white',
-              padding: '1.5rem',
-              borderRadius: '12px',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-              flex: '1 1 400px',
-              height: '240px',
-              overflow: 'auto'
-            }}>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '1rem', color: '#333' }}>
-                {t('Interesting places to visit')}
-              </h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.9rem', lineHeight: '1.3' }}>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Amsterdam City Center')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Schiphol Airport')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Amsterdam beach (Zandvoort)')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Langevelderslag (Beach)')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Haarlem City Center')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Bergen (artist village)')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('The Bazaar Beverwijk')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Alkmaar Cheese')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Linneaushof Bennebroek')}</li>
-                <li style={{ marginTop: '0.5rem', fontWeight: 'bold', color: '#FF385C' }}>{t('During april and may')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Keukenhof')}</li>
-                <li style={{ marginBottom: '0.1rem' }}>• {t('Flowerbulb route')}</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <section style={{ padding: '2rem 0' }}>
-        <div className="container">
-          <h3 style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-            {t('Our Accommodations')}
-          </h3>
-          <div className="grid grid-3">
-            <AccommodationCard id="gardenhouse" name={t('Garden House')} description={t('Cozy house with beautiful garden terrace')} />
-            <AccommodationCard id="green-studio" name={t('Green Studio')} description={t('Modern studio with scenic views')} />
-            <AccommodationCard id="red-studio" name={t('Red Studio')} description={t('Stylish studio with rooftop terrace')} />
+
           </div>
         </div>
       </section>
@@ -152,7 +152,6 @@ const EventsPage = () => {
         </h2>
         <div className="grid grid-3">
           <KeukenhofCard />
-          <KeukenhofShowsCard />
           <KoningsdagCard />
           <PrideCard />
           <CastlefestCard />
@@ -174,10 +173,10 @@ const LogoImage = () => {
   const [logoUrl, setLogoUrl] = useState('')
   
   useEffect(() => {
-    fetch('/api/google-image/1EJ1wo3qCWUzdUOoW5AYhZM1Fhz0vGJyW')
-      .then(res => res.json())
-      .then(data => setLogoUrl(data.lh3_url))
-      .catch(() => setLogoUrl(''))
+    getGoogleImageUrl('1EJ1wo3qCWUzdUOoW5AYhZM1Fhz0vGJyW').then(url => {
+      console.log('Logo URL:', url)
+      setLogoUrl(url)
+    })
   }, [])
   
   if (!logoUrl) {
@@ -204,15 +203,8 @@ const LogoImage = () => {
   )
 }
 
-const CarouselImage = ({ imageId, name, imageName }: { imageId: string; name: string; imageName: string }) => {
-  const [imageUrl, setImageUrl] = useState('')
-  
-  useEffect(() => {
-    fetch(`/api/google-image/${imageId}`)
-      .then(res => res.json())
-      .then(data => setImageUrl(data.lh3_url))
-      .catch(() => setImageUrl(''))
-  }, [imageId])
+const PreloadedImage = ({ imageUrl, name, imageName }: { imageUrl: string; name: string; imageName: string }) => {
+  const [imageError, setImageError] = useState(false)
   
   if (!imageUrl) {
     return (
@@ -223,9 +215,27 @@ const CarouselImage = ({ imageId, name, imageName }: { imageId: string; name: st
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#666'
+        color: '#666',
+        fontSize: '1rem'
       }}>
-        Loading...
+        {imageName || 'No image'}
+      </div>
+    )
+  }
+  
+  if (imageError) {
+    return (
+      <div style={{
+        width: '100%',
+        height: '100%',
+        backgroundColor: '#f0f0f0',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#666',
+        fontSize: '1rem'
+      }}>
+        {imageName}
       </div>
     )
   }
@@ -242,6 +252,7 @@ const CarouselImage = ({ imageId, name, imageName }: { imageId: string; name: st
       }}
       crossOrigin="anonymous"
       referrerPolicy="no-referrer"
+      onError={() => setImageError(true)}
     />
   )
 }
@@ -314,11 +325,49 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
   const [autoplayEnabled, setAutoplayEnabled] = useState(true)
   const [showModal, setShowModal] = useState(false)
   const [openSections, setOpenSections] = useState<{[key: string]: boolean}>({})
-  const swiperRef = useRef(null)
+  const [imageUrls, setImageUrls] = useState<{[key: string]: string}>({})
+  const [imagesLoaded, setImagesLoaded] = useState(false)
+
   
   const toggleSection = (section: string) => {
     setOpenSections(prev => ({ ...prev, [section]: !prev[section] }))
   }
+  
+  useEffect(() => {
+    const loadAllImages = async () => {
+      const imagesWithNames = getImagesWithNames()
+      const urls: {[key: string]: string} = {}
+      
+      for (const [imageName, imageId] of imagesWithNames) {
+        try {
+          const url = await getGoogleImageUrl(imageId)
+          urls[imageName] = url
+        } catch (error) {
+          console.error(`Failed to load image ${imageName}:`, error)
+          urls[imageName] = ''
+        }
+      }
+      
+      setImageUrls(urls)
+      setImagesLoaded(true)
+    }
+    
+    loadAllImages()
+  }, [id])
+  
+  // Autoplay functionality
+  useEffect(() => {
+    if (!autoplayEnabled || !imagesLoaded) return
+    
+    const interval = setInterval(() => {
+      setCurrentImageIndex(prev => {
+        const imagesWithNames = getImagesWithNames()
+        return (prev + 1) % imagesWithNames.length
+      })
+    }, 4000)
+    
+    return () => clearInterval(interval)
+  }, [autoplayEnabled, imagesLoaded, id])
   
   const getImagesWithNames = () => {
     // Use stable id for lookup so translations don't affect which images load
@@ -331,7 +380,7 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
   const imagesWithNames = getImagesWithNames()
   const currentImageName = imagesWithNames[currentImageIndex]?.[0] || ''
   const localizedNoImage = t('no-image') || 'No image'
-  const propertyImages = imagesData.properties[id] || {}
+  const propertyImages = (imagesData.properties as any)[id] || {}
   const warnings: string[] = []
   if (!('voordeur' in propertyImages)) {
     // Prefer localized text if available
@@ -351,46 +400,18 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
       }}>
         {imagesWithNames.length > 0 ? (
           <div style={{ width: '100%', height: '100%', maxWidth: '100%', overflow: 'hidden' }}>
-              <Swiper
-              modules={[Autoplay]}
-              autoplay={autoplayEnabled ? { 
-                delay: 4000, 
-                disableOnInteraction: false
-              } : false}
-              loop={true}
-              className={`accommodation-swiper-${id}`}
-              style={{ height: '100%', width: '100%', maxWidth: '100%' }}
-              onSlideChange={(swiper) => setCurrentImageIndex(typeof swiper.realIndex === 'number' ? swiper.realIndex : (swiper.activeIndex % (imagesWithNames.length || 1)))}
-              onSwiper={(swiper) => { swiperRef.current = swiper }}
-              speed={300}
-              allowTouchMove={true}
-            >
-            {imagesWithNames.map(([imageName, imageId], index) => (
-              <SwiperSlide key={index} style={{ width: '100%', height: '100%' }}>
-                <CarouselImage imageId={imageId} name={name} imageName={imageName} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          {/* Debug: warn if no images */}
-          {imagesWithNames.length === 0 && console.warn(`Accommodation ${id} has no images`) }
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px', gap: '5px' }}>
-            {imagesWithNames.map((_, index) => (
-              <div
-                key={index}
-                onClick={() => {
-                  if (swiperRef.current) swiperRef.current.slideToLoop(index)
+            {imagesLoaded && imagesWithNames.map(([imageName], index) => (
+              <div 
+                key={index} 
+                style={{ 
+                  width: '100%', 
+                  height: '100%',
+                  display: currentImageIndex === index ? 'block' : 'none'
                 }}
-                style={{
-                  width: '10px',
-                  height: '10px',
-                  borderRadius: '50%',
-                  background: currentImageIndex === index ? '#FF385C' : '#ccc',
-                  cursor: 'pointer',
-                  transition: 'background 0.3s'
-                }}
-              />
+              >
+                <PreloadedImage imageUrl={imageUrls[imageName]} name={name} imageName={imageName} />
+              </div>
             ))}
-          </div>
           </div>
         ) : (
           <div style={{ width: '100%', height: '100%', maxWidth: '100%', overflow: 'hidden' }}>
@@ -417,10 +438,8 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
             <div
               key={index}
               onClick={() => {
-                if (swiperRef.current) {
-                  setAutoplayEnabled(false)
-                  swiperRef.current.slideToLoop(index)
-                }
+                setAutoplayEnabled(false)
+                setCurrentImageIndex(index)
               }}
               style={{
                 width: '12px',
@@ -497,46 +516,7 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
             <p style={{ marginBottom: '16px' }}>{t(`${id}.access.text`)}</p>
           </CollapsibleSection>
           
-          <CollapsibleSection 
-            title={t(`${id}.neighborhood.title`)} 
-            isOpen={openSections.neighborhood} 
-            onToggle={() => toggleSection('neighborhood')}
-          >
-            <p style={{ marginBottom: '16px' }}>{t(`${id}.neighborhood.text`)}</p>
-          </CollapsibleSection>
-          
-          <CollapsibleSection 
-            title={t(`${id}.children.title`)} 
-            isOpen={openSections.children} 
-            onToggle={() => toggleSection('children')}
-          >
-            <ul style={{ marginBottom: '16px', paddingLeft: '20px' }}>
-              <li>{t(`${id}.children.item1`)}</li>
-              <li>{t(`${id}.children.item2`)}</li>
-              <li>{t(`${id}.children.item3`)}</li>
-              <li>{t(`${id}.children.item4`)}</li>
-              <li>{t(`${id}.children.item5`)}</li>
-              <li>{t(`${id}.children.item6`)}</li>
-              <li>{t(`${id}.children.item7`)}</li>
-              <li>{t(`${id}.children.item8`)}</li>
-            </ul>
-          </CollapsibleSection>
-          
-          <CollapsibleSection 
-            title={t(`${id}.transport.title`)} 
-            isOpen={openSections.transport} 
-            onToggle={() => toggleSection('transport')}
-          >
-            <p style={{ marginBottom: '16px' }}>{t(`${id}.transport.text`)}</p>
-          </CollapsibleSection>
-          
-          <CollapsibleSection 
-            title={t(`${id}.checkin.title`)} 
-            isOpen={openSections.checkin} 
-            onToggle={() => toggleSection('checkin')}
-          >
-            <p style={{ marginBottom: '0' }}>{t(`${id}.checkin.text`)}</p>
-          </CollapsibleSection>
+
         </div>
       </Modal>
     </div>
@@ -544,12 +524,11 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
 }
 
 const F1Card = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #e10600, #ff6600)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
         <h4 style={{ fontWeight: 'bold', fontSize: '1.25rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>
-          {t('Dutch F1 Grand Prix')}
+          Dutch F1 Grand Prix
         </h4>
         <p style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>21, 22 & 23 augustus 2026</p>
         <p style={{ fontSize: '0.85rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>Circuit Zandvoort</p>
@@ -576,12 +555,11 @@ const F1Card = () => {
 }
 
 const ADECard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #1a1a1a, #333333)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
         <h4 style={{ fontWeight: 'bold', fontSize: '1.25rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>
-          {t('Amsterdam Dance Event')}
+          Amsterdam Dance Event
         </h4>
         <p style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: '#ffd700', textShadow: '1px 1px 2px rgba(0,0,0,0.3)', fontWeight: 'bold' }}>30-jarig jubileum!</p>
         <p style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>21 - 25 oktober 2026</p>
@@ -609,14 +587,13 @@ const ADECard = () => {
 }
 
 const KeukenhofCard = () => {
-  const { t } = useTranslation()
   const [showModal, setShowModal] = useState(false)
   return (
     <>
       <div className="card" style={{ background: 'linear-gradient(135deg, #2d5016, #4a7c59)', color: 'white', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'relative', zIndex: 2 }}>
           <h4 style={{ fontWeight: 'bold', fontSize: '1.25rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>
-            {t('Keukenhof Gardens')}
+            Keukenhof Gardens
           </h4>
           <p style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>19 maart - 10 mei 2026</p>
           <p style={{ fontSize: '0.85rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>Lisse • 15 min van JaBaKi</p>
@@ -701,7 +678,6 @@ const KeukenhofCard = () => {
 }
 
 const MysterylandCard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #8B5CF6, #A855F7)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -732,7 +708,6 @@ const MysterylandCard = () => {
 }
 
 const KoningsdagCard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #FF6B35, #F7931E)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -763,7 +738,6 @@ const KoningsdagCard = () => {
 }
 
 const PrideCard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #e40303, #ff8c00, #ffed00, #008018, #004cff, #732982)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -793,7 +767,6 @@ const PrideCard = () => {
 }
 
 const WorldPrideCard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(45deg, #e40303, #ff8c00, #ffed00, #008018, #004cff, #732982)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -823,7 +796,6 @@ const WorldPrideCard = () => {
 }
 
 const MonumentendagCard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #8B4513, #A0522D)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -854,7 +826,6 @@ const MonumentendagCard = () => {
 }
 
 const DamTotDamCard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #0066CC, #004499)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -884,7 +855,6 @@ const DamTotDamCard = () => {
 }
 
 const MarathonCard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #DC143C, #B22222)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -914,7 +884,6 @@ const MarathonCard = () => {
 }
 
 const CastlefestCard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #4B0082, #663399)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -945,7 +914,6 @@ const CastlefestCard = () => {
 }
 
 const DahliaCard = () => {
-  const { t } = useTranslation()
   return (
     <div className="card" style={{ background: 'linear-gradient(135deg, #FF69B4, #FF1493)', color: 'white', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'relative', zIndex: 2 }}>
@@ -975,49 +943,9 @@ const DahliaCard = () => {
   )
 }
 
-const KeukenhofShowsCard = () => {
-  const { t } = useTranslation()
-  return (
-    <div className="card" style={{ background: 'linear-gradient(135deg, #FF6B9D, #E91E63)', color: 'white', position: 'relative', overflow: 'hidden' }}>
-      <div style={{ position: 'relative', zIndex: 2 }}>
-        <h4 style={{ fontWeight: 'bold', fontSize: '1.25rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>
-          Keukenhof Bloemenshows
-        </h4>
-        <p style={{ fontSize: '0.9rem', marginBottom: '0.5rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>Tot 12 mei 2026</p>
-        <p style={{ fontSize: '0.8rem', marginBottom: '1rem', color: 'white', textShadow: '1px 1px 2px rgba(0,0,0,0.3)' }}>Verrassend decor en afwisselende kalender</p>
-        <button 
-          onClick={() => window.open('https://keukenhof.nl/nl/nieuws/bloemenshows-in-jubilerende-keukenhof-hebben-verrassend-decor-en-afwisselende-kalender/', '_blank')}
-          style={{
-            background: '#FF385C',
-            color: 'white',
-            border: 'none',
-            padding: '8px 16px',
-            borderRadius: '6px',
-            cursor: 'pointer',
-            fontSize: '14px',
-            fontWeight: 'bold'
-          }}
-        >
-          Meer info
-        </button>
-      </div>
-      <div style={{ position: 'absolute', top: '-20px', right: '-20px', fontSize: '4rem', opacity: 0.15, zIndex: 1 }}>🌺</div>
-    </div>
-  )
-}
 
-const EventCard = ({ title, date }: { title: string; date: string }) => {
-  const { t } = useTranslation()
-  return (
-    <div className="card">
-      <h4 style={{ fontWeight: 'bold', fontSize: '1.125rem', marginBottom: '0.5rem' }}>
-        {title}
-      </h4>
-      <p style={{ color: '#666', marginBottom: '1rem' }}>{date}</p>
-      <button className="btn btn-primary">{t('Learn More')}</button>
-    </div>
-  )
-}
+
+
 
 
 

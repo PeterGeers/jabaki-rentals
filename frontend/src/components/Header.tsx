@@ -1,9 +1,9 @@
 import { Box, Flex, Text, Button, HStack, IconButton } from '@chakra-ui/react'
-import { Link, useNavigate } from 'react-router-dom'
-import { FiUser, FiMenu } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
+import { FiUser } from 'react-icons/fi'
 
 const Header = () => {
-  const navigate = useNavigate()
+
 
   return (
     <Box borderBottom="1px" borderColor="gray.200" bg="white" position="sticky" top={0} zIndex={1000}>

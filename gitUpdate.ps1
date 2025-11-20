@@ -1,5 +1,5 @@
 # param([string]$message)
-$message = "Goed om te weten pagina toegevoegd"
+$message = "Preparing to move to AWS Cloudfront or Amplify"
 # Change to the script's directory (project root)
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $scriptPath

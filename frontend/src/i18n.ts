@@ -181,7 +181,25 @@ const resources = {
       "green-studio.transport.title": "Getting Around",
       "green-studio.transport.text": "The most up to date information can be found using gmaps selecting Jabaki Hoofddorp and any location you want as the two locations to travel between. Actual lines, time and prices for Public transport can be found by 9292.nl. This is a Dutch site for public transport.",
       "green-studio.checkin.title": "Check in and out",
-      "green-studio.checkin.text": "Check in: 02:00 PM\nCheck out: 10:00 AM"
+      "green-studio.checkin.text": "Check in: 02:00 PM\nCheck out: 10:00 AM",
+      "Terms and Conditions": "Terms and Conditions",
+      "terms.title": "Terms and Conditions — JaBaKi Studios",
+      "terms.subtitle": "(A Goodwin Solutions B.V. company, governed by Dutch law)",
+      "terms.section1.title": "1. Terms and Definitions",
+      "terms.section2.title": "2. Scope of the Agreement",
+      "terms.section3.title": "3. Booking and Payment",
+      "terms.section4.title": "4. Cancellation and Refunds",
+      "terms.section5.title": "5. Guest Obligations",
+      "terms.section6.title": "6. Host Obligations",
+      "terms.section7.title": "7. Liability and Insurance",
+      "terms.section8.title": "8. Force Majeure",
+      "terms.section9.title": "9. Privacy",
+      "terms.section10.title": "10. Applicable Law and Jurisdiction",
+      "terms.section11.title": "11. Miscellaneous",
+      "Restaurants & Cafés": "Restaurants & Cafés",
+      "Supermarkets & Shops": "Supermarkets & Shops",
+      "Attractions": "Attractions",
+      "Entertainment": "Entertainment"
     }
   },
   nl: {
@@ -362,7 +380,25 @@ const resources = {
       "green-studio.transport.title": "Vervoer",
       "green-studio.transport.text": "De meest actuele informatie is te vinden met gmaps door Jabaki Hoofddorp en elke gewenste locatie te selecteren als de twee locaties om tussen te reizen. Actuele lijnen, tijd en prijzen voor openbaar vervoer zijn te vinden op 9292.nl. Dit is een Nederlandse site voor openbaar vervoer.",
       "green-studio.checkin.title": "In- en uitchecken",
-      "green-studio.checkin.text": "Inchecken: 14:00\nUitchecken: 10:00"
+      "green-studio.checkin.text": "Inchecken: 14:00\nUitchecken: 10:00",
+      "Terms and Conditions": "Algemene Voorwaarden",
+      "terms.title": "Algemene Voorwaarden — JaBaKi Studios",
+      "terms.subtitle": "(Een Goodwin Solutions B.V. bedrijf, onder Nederlands recht)",
+      "terms.section1.title": "1. Begrippen en Definities",
+      "terms.section2.title": "2. Reikwijdte van de Overeenkomst",
+      "terms.section3.title": "3. Boeking en Betaling",
+      "terms.section4.title": "4. Annulering en Terugbetalingen",
+      "terms.section5.title": "5. Verplichtingen van de Gast",
+      "terms.section6.title": "6. Verplichtingen van de Gastheer",
+      "terms.section7.title": "7. Aansprakelijkheid en Verzekering",
+      "terms.section8.title": "8. Overmacht",
+      "terms.section9.title": "9. Privacy",
+      "terms.section10.title": "10. Toepasselijk Recht en Jurisdictie",
+      "terms.section11.title": "11. Overige Bepalingen",
+      "Restaurants & Cafés": "Restaurants & Cafés",
+      "Supermarkets & Shops": "Supermarkten & Winkels",
+      "Attractions": "Bezienswaardigheden",
+      "Entertainment": "Uitgaan & Entertainment"
     }
   },
   de: {
@@ -543,7 +579,25 @@ const resources = {
       "green-studio.transport.title": "Fortbewegung",
       "green-studio.transport.text": "Die aktuellsten Informationen finden Sie mit gmaps, indem Sie Jabaki Hoofddorp und jeden gewünschten Ort als die beiden Orte auswählen, zwischen denen Sie reisen möchten. Aktuelle Linien, Zeiten und Preise für öffentliche Verkehrsmittel finden Sie auf 9292.nl. Dies ist eine niederländische Website für öffentliche Verkehrsmittel.",
       "green-studio.checkin.title": "Ein- und Auschecken",
-      "green-studio.checkin.text": "Einchecken: 14:00\nAuschecken: 10:00"
+      "green-studio.checkin.text": "Einchecken: 14:00\nAuschecken: 10:00",
+      "Terms and Conditions": "Allgemeine Geschäftsbedingungen",
+      "terms.title": "Allgemeine Geschäftsbedingungen — JaBaKi Studios",
+      "terms.subtitle": "(Ein Goodwin Solutions B.V. Unternehmen, unter niederländischem Recht)",
+      "terms.section1.title": "1. Begriffe und Definitionen",
+      "terms.section2.title": "2. Geltungsbereich der Vereinbarung",
+      "terms.section3.title": "3. Buchung und Zahlung",
+      "terms.section4.title": "4. Stornierung und Rückerstattungen",
+      "terms.section5.title": "5. Gäste-Verpflichtungen",
+      "terms.section6.title": "6. Gastgeber-Verpflichtungen",
+      "terms.section7.title": "7. Haftung und Versicherung",
+      "terms.section8.title": "8. Höhere Gewalt",
+      "terms.section9.title": "9. Datenschutz",
+      "terms.section10.title": "10. Anwendbares Recht und Gerichtsbarkeit",
+      "terms.section11.title": "11. Sonstiges",
+      "Restaurants & Cafés": "Restaurants & Cafés",
+      "Supermarkets & Shops": "Supermärkte & Geschäfte",
+      "Attractions": "Sehenswürdigkeiten",
+      "Entertainment": "Unterhaltung"
     }
   }
 }

@@ -18,7 +18,7 @@ interface ListingCardProps {
 
 const ListingCard = ({ listing }: ListingCardProps) => {
   const navigate = useNavigate()
-  const { imageUrl, loading } = useGoogleImage(listing.imageId)
+  const { imageUrl } = useGoogleImage(listing.imageId)
 
   return (
     <Box

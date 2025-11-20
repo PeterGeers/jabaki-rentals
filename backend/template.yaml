@@ -1,0 +1,78 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: JaBaKi Backend API
+
+Globals:
+  Function:
+    Timeout: 30
+    Runtime: python3.12
+  Api:
+    Cors:
+      AllowMethods: "'GET,POST,OPTIONS'"
+      AllowHeaders: "'content-type'"
+      AllowOrigin: "'*'"
+
+Parameters:
+  ApiKeyRequired:
+    Type: String
+    Default: "false"
+    AllowedValues: ["true", "false"]
+    Description: "Enable API Key authentication"
+
+Resources:
+  JaBaKiApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: lambda_function.handler
+      Runtime: python3.12
+      Events:
+        Root:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
+        GetGoogleImage:
+          Type: Api
+          Properties:
+            Path: /api/google-image/{file_id}
+            Method: get
+        HealthCheck:
+          Type: Api
+          Properties:
+            Path: /health
+            Method: get
+        OptionsRoot:
+          Type: Api
+          Properties:
+            Path: /
+            Method: options
+        OptionsApi:
+          Type: Api
+          Properties:
+            Path: /api/google-image/{file_id}
+            Method: options
+        OptionsHealth:
+          Type: Api
+          Properties:
+            Path: /health
+            Method: options
+
+  ApiGatewayUsagePlan:
+    Type: AWS::ApiGateway::UsagePlan
+    Properties:
+      UsagePlanName: JaBaKiUsagePlan
+      Description: Usage plan for JaBaKi API
+      Throttle:
+        RateLimit: 100
+        BurstLimit: 200
+      Quota:
+        Limit: 10000
+        Period: DAY
+
+Outputs:
+  JaBaKiApiUrl:
+    Description: "API Gateway endpoint URL"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+    Export:
+      Name: JaBaKiApiUrl

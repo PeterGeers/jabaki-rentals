@@ -1,0 +1,13 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "jabaki-backend"
+s3_prefix = "jabaki-backend"
+region = "eu-west-1"
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = true
+allow_iam_role_creation = true
+disable_rollback = true
+resolve_s3 = true
+image_repositories = []

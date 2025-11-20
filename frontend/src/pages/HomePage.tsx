@@ -1,13 +1,13 @@
-import { Box, Container, Text, Button, SimpleGrid, Image, VStack, HStack } from '@chakra-ui/react'
+import { Box, Container, Text, SimpleGrid, Image, VStack } from '@chakra-ui/react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
+
 import SearchBar from '../components/SearchBar'
 import ListingCard from '../components/ListingCard'
 import { useGoogleImage } from '../hooks/useGoogleImage'
 import imagesData from '../data/images.json'
 
 const HomePage = () => {
-  const navigate = useNavigate()
+
 
   const featuredListings = [
     {
@@ -83,7 +83,7 @@ const HomePage = () => {
 const AccommodationCard = ({ id, name, description }: { id: string; name: string; description: string }) => {
   const { t } = useTranslation()
   // Prefer 'voordeur' if available, otherwise pick first image in the property
-  const propertyImages = imagesData.properties[id] || {}
+  const propertyImages = (imagesData.properties as any)[id] || {}
   let imageId = ''
   if ('voordeur' in propertyImages) {
     imageId = propertyImages['voordeur']
@@ -91,7 +91,7 @@ const AccommodationCard = ({ id, name, description }: { id: string; name: string
     const vals = Object.values(propertyImages)
     imageId = vals.length > 0 ? vals[0] as string : ''
   }
-  const { imageUrl, loading } = useGoogleImage(imageId)
+  const { imageUrl } = useGoogleImage(imageId)
 
   const warnings: string[] = []
   if (!imageId) warnings.push(`${t(name)}: ${t('voordeur') || 'voordeur'} niet zichtbaar`)

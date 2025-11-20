@@ -1,16 +1,16 @@
 # JaBaKi Full Stack Starter Script
-Write-Host "Starting JaBaKi Full Stack Application..." -ForegroundColor Green
+Write-Host "Starting JaBaKi Backend..." -ForegroundColor Green
 
-# Start backend in new window
-Start-Process powershell -ArgumentList "-NoExit", "-File", ".\start-backend.ps1"
+# Get script directory
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-# Wait a moment for backend to start
-Start-Sleep -Seconds 3
+# Start backend
+Set-Location "$scriptDir\backend"
+Start-Process python -ArgumentList "server.py" -WindowStyle Normal
 
-# Start frontend in separate window
-Write-Host "Starting Frontend..." -ForegroundColor Yellow
-Start-Process powershell -ArgumentList "-NoExit", "-File", ".\start-frontend.ps1"
+Write-Host "Backend started. Starting Frontend..." -ForegroundColor Yellow
+Start-Sleep -Seconds 2
 
-Write-Host "Both Backend and Frontend are starting in separate windows..." -ForegroundColor Green
-Write-Host "Press any key to exit..." -ForegroundColor Cyan
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+# Start frontend
+Set-Location "$scriptDir\frontend"
+npm run dev
