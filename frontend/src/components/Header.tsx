@@ -1,4 +1,4 @@
-import { Box, Flex, Text, Button, HStack, IconButton, VStack, Collapse, useDisclosure } from '@chakra-ui/react'
+import { Box, Flex, Text, Button, HStack, IconButton, VStack, useDisclosure } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { FiUser, FiMenu, FiX } from 'react-icons/fi'
 import { useTranslation } from 'react-i18next'
@@ -41,23 +41,25 @@ const Header = () => {
         </HStack>
       </Flex>
       
-      <Collapse in={isOpen}>
-        <VStack spacing={4} align="stretch" px={6} pb={4} display={{ md: 'none' }}>
-          <Link to="/" onClick={onToggle}>
-            <Text _hover={{ color: 'red.500' }}>{t('Home')}</Text>
-          </Link>
-          <Link to="/events" onClick={onToggle}>
-            <Text _hover={{ color: 'red.500' }}>{t('Events')}</Text>
-          </Link>
-          <Link to="/good-to-know" onClick={onToggle}>
-            <Text _hover={{ color: 'red.500' }}>{t('Good to know')}</Text>
-          </Link>
-          <Button variant="ghost" size="sm" justifyContent="flex-start">{t('Host your home')}</Button>
-          <Button leftIcon={<FiUser />} variant="outline" size="sm" justifyContent="flex-start">
-            Account
-          </Button>
-        </VStack>
-      </Collapse>
+      {isOpen && (
+        <Box pb={4} display={{ md: 'none' }}>
+          <VStack spacing={4} align="stretch" px={6}>
+            <Link to="/" onClick={onToggle}>
+              <Text _hover={{ color: 'red.500' }}>{t('Home')}</Text>
+            </Link>
+            <Link to="/events" onClick={onToggle}>
+              <Text _hover={{ color: 'red.500' }}>{t('Events')}</Text>
+            </Link>
+            <Link to="/good-to-know" onClick={onToggle}>
+              <Text _hover={{ color: 'red.500' }}>{t('Good to know')}</Text>
+            </Link>
+            <Button variant="ghost" size="sm" justifyContent="flex-start">{t('Host your home')}</Button>
+            <Button leftIcon={<FiUser />} variant="outline" size="sm" justifyContent="flex-start">
+              Account
+            </Button>
+          </VStack>
+        </Box>
+      )}
     </Box>
   )
 }
