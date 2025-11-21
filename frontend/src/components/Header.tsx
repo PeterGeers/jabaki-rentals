@@ -42,23 +42,21 @@ const Header = () => {
       </Flex>
       
       <Collapse in={isOpen}>
-        <Box pb={4} display={{ md: 'none' }}>
-          <VStack spacing={4} align="stretch" px={6}>
-            <Link to="/" onClick={onToggle}>
-              <Text _hover={{ color: 'red.500' }}>{t('Home')}</Text>
-            </Link>
-            <Link to="/events" onClick={onToggle}>
-              <Text _hover={{ color: 'red.500' }}>{t('Events')}</Text>
-            </Link>
-            <Link to="/good-to-know" onClick={onToggle}>
-              <Text _hover={{ color: 'red.500' }}>{t('Good to know')}</Text>
-            </Link>
-            <Button variant="ghost" size="sm" justifyContent="flex-start">{t('Host your home')}</Button>
-            <Button leftIcon={<FiUser />} variant="outline" size="sm" justifyContent="flex-start">
-              Account
-            </Button>
-          </VStack>
-        </Box>
+        <VStack spacing={4} align="stretch" px={6} pb={4} display={{ md: 'none' }}>
+          <Link to="/" onClick={onToggle}>
+            <Text _hover={{ color: 'red.500' }}>{t('Home')}</Text>
+          </Link>
+          <Link to="/events" onClick={onToggle}>
+            <Text _hover={{ color: 'red.500' }}>{t('Events')}</Text>
+          </Link>
+          <Link to="/good-to-know" onClick={onToggle}>
+            <Text _hover={{ color: 'red.500' }}>{t('Good to know')}</Text>
+          </Link>
+          <Button variant="ghost" size="sm" justifyContent="flex-start">{t('Host your home')}</Button>
+          <Button leftIcon={<FiUser />} variant="outline" size="sm" justifyContent="flex-start">
+            Account
+          </Button>
+        </VStack>
       </Collapse>
     </Box>
   )
