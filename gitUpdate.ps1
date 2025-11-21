@@ -1,5 +1,5 @@
 # param([string]$message)
-$message = "Responsive update and Move to AWS Amplify"
+$message = "added Guardrails and testing"
 # Change to the script's directory (project root)
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $scriptPath
@@ -17,7 +17,7 @@ if ($message) {
 else {
     git commit -m "$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
 }
-git push origin main
+# git push origin main
 
 # .\gitUpdate.ps1 "Your message here"
 # Examples:
