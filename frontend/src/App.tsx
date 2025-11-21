@@ -24,9 +24,11 @@ function App() {
       }}>
         <div className="container" style={{ 
           display: 'flex', 
+          flexDirection: window.innerWidth < 768 ? 'column' : 'row',
           justifyContent: 'space-between', 
           alignItems: 'center', 
-          padding: '1rem 1.5rem' 
+          padding: '1rem 1.5rem',
+          gap: '1rem'
         }}>
           <Link to="/" style={{ textDecoration: 'none' }}>
             <LogoImage />
@@ -199,7 +201,7 @@ const LogoImage = () => {
       style={{ 
         maxHeight: '120px', 
         width: 'auto',
-        height: 'clamp(60px, 8vw, 120px)'
+        height: 'clamp(40px, 6vw, 120px)'
       }}
       crossOrigin="anonymous"
       referrerPolicy="no-referrer"
