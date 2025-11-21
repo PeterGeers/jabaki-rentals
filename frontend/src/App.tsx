@@ -31,10 +31,10 @@ function App() {
           <Link to="/" style={{ textDecoration: 'none' }}>
             <LogoImage />
           </Link>
-          <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-            <Link to="/" style={{ textDecoration: 'none', color: '#333' }}>{t('Home')}</Link>
-            <Link to="/events" style={{ textDecoration: 'none', color: '#333' }}>{t('Events')}</Link>
-            <Link to="/good-to-know" style={{ textDecoration: 'none', color: '#333' }}>{t('Good to know')}</Link>
+          <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            <Link to="/" style={{ textDecoration: 'none', color: '#333', whiteSpace: 'nowrap' }}>{t('Home')}</Link>
+            <Link to="/events" style={{ textDecoration: 'none', color: '#333', whiteSpace: 'nowrap' }}>{t('Events')}</Link>
+            <Link to="/good-to-know" style={{ textDecoration: 'none', color: '#333', whiteSpace: 'nowrap' }}>{t('Good to know')}</Link>
             <select 
               value={i18n.language} 
               onChange={(e) => changeLanguage(e.target.value)}
@@ -196,7 +196,11 @@ const LogoImage = () => {
     <img 
       src={logoUrl}
       alt="JaBaKi Logo" 
-      style={{ maxHeight: '120px', width: 'auto' }}
+      style={{ 
+        maxHeight: '120px', 
+        width: 'auto',
+        height: 'clamp(60px, 8vw, 120px)'
+      }}
       crossOrigin="anonymous"
       referrerPolicy="no-referrer"
     />

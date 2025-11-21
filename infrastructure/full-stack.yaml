@@ -1,0 +1,122 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'JaBaKi Complete Infrastructure - Backend + Frontend'
+
+Parameters:
+  GitHubRepo:
+    Type: String
+    Description: 'GitHub repository URL'
+  GitHubToken:
+    Type: String
+    NoEcho: true
+    Description: 'GitHub personal access token'
+  DomainName:
+    Type: String
+    Default: 'jabaki.nl'
+    Description: 'Custom domain name'
+
+Resources:
+  # Backend Lambda Function
+  JaBaKiApi:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ../backend/
+      Handler: lambda_function.handler
+      Runtime: python3.12
+      Timeout: 30
+      Events:
+        Root:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
+        GetGoogleImage:
+          Type: Api
+          Properties:
+            Path: /api/google-image/{file_id}
+            Method: get
+        HealthCheck:
+          Type: Api
+          Properties:
+            Path: /health
+            Method: get
+        OptionsRoot:
+          Type: Api
+          Properties:
+            Path: /
+            Method: options
+        OptionsApi:
+          Type: Api
+          Properties:
+            Path: /api/google-image/{file_id}
+            Method: options
+        OptionsHealth:
+          Type: Api
+          Properties:
+            Path: /health
+            Method: options
+
+  # Frontend Amplify App
+  AmplifyApp:
+    Type: AWS::Amplify::App
+    Properties:
+      Name: jabaki-frontend
+      Repository: !Ref GitHubRepo
+      AccessToken: !Ref GitHubToken
+      BuildSpec: |
+        version: 1
+        frontend:
+          phases:
+            preBuild:
+              commands:
+                - cd frontend
+                - npm ci
+            build:
+              commands:
+                - cd frontend
+                - npm run build
+          artifacts:
+            baseDirectory: frontend/dist
+            files:
+              - '**/*'
+          cache:
+            paths:
+              - frontend/node_modules/**/*
+      CustomRules:
+        - Source: '/<*>'
+          Target: '/index.html'
+          Status: '200'
+      EnvironmentVariables:
+        - Name: VITE_API_URL
+          Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod'
+
+  AmplifyBranch:
+    Type: AWS::Amplify::Branch
+    Properties:
+      AppId: !GetAtt AmplifyApp.AppId
+      BranchName: main
+      EnableAutoBuild: true
+
+  AmplifyDomain:
+    Type: AWS::Amplify::Domain
+    Properties:
+      AppId: !GetAtt AmplifyApp.AppId
+      DomainName: !Ref DomainName
+      SubDomainSettings:
+        - Prefix: ''
+          BranchName: main
+        - Prefix: www
+          BranchName: main
+
+Outputs:
+  BackendApiUrl:
+    Description: 'Backend API URL'
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/'
+    Export:
+      Name: JaBaKi-BackendApiUrl
+  
+  FrontendUrl:
+    Description: 'Frontend URL'
+    Value: !Sub 'https://${DomainName}'
+    Export:
+      Name: JaBaKi-FrontendUrl

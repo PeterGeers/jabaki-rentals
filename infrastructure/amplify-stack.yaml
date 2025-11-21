@@ -1,0 +1,93 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'JaBaKi Full Stack Infrastructure - Frontend (Amplify) + Backend (Lambda)'
+
+Parameters:
+  GitHubRepo:
+    Type: String
+    Default: 'https://github.com/YOUR_USERNAME/JaBaKi'
+    Description: 'GitHub repository URL'
+  GitHubToken:
+    Type: String
+    NoEcho: true
+    Description: 'GitHub personal access token'
+  DomainName:
+    Type: String
+    Default: 'jabaki.nl'
+    Description: 'Custom domain name'
+
+Resources:
+  # Amplify App
+  AmplifyApp:
+    Type: AWS::Amplify::App
+    Properties:
+      Name: jabaki-frontend
+      Repository: !Ref GitHubRepo
+      AccessToken: !Ref GitHubToken
+      BuildSpec: |
+        version: 1
+        frontend:
+          phases:
+            preBuild:
+              commands:
+                - cd frontend
+                - npm ci
+            build:
+              commands:
+                - cd frontend
+                - npm run build
+          artifacts:
+            baseDirectory: frontend/dist
+            files:
+              - '**/*'
+          cache:
+            paths:
+              - frontend/node_modules/**/*
+      CustomRules:
+        - Source: '</^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>'
+          Target: '/index.html'
+          Status: '200'
+      EnvironmentVariables:
+        - Name: AMPLIFY_MONOREPO_APP_ROOT
+          Value: frontend
+        - Name: AMPLIFY_DIFF_DEPLOY
+          Value: false
+
+  # Main Branch
+  AmplifyBranch:
+    Type: AWS::Amplify::Branch
+    Properties:
+      AppId: !GetAtt AmplifyApp.AppId
+      BranchName: main
+      EnableAutoBuild: true
+      EnablePullRequestPreview: false
+
+  # Custom Domain
+  AmplifyDomain:
+    Type: AWS::Amplify::Domain
+    Properties:
+      AppId: !GetAtt AmplifyApp.AppId
+      DomainName: !Ref DomainName
+      SubDomainSettings:
+        - Prefix: ''
+          BranchName: !GetAtt AmplifyBranch.BranchName
+        - Prefix: www
+          BranchName: !GetAtt AmplifyBranch.BranchName
+
+Outputs:
+  AmplifyAppId:
+    Description: 'Amplify App ID'
+    Value: !GetAtt AmplifyApp.AppId
+    Export:
+      Name: JaBaKi-AmplifyAppId
+  
+  AmplifyURL:
+    Description: 'Amplify App URL'
+    Value: !Sub 'https://main.${AmplifyApp.DefaultDomain}'
+    Export:
+      Name: JaBaKi-AmplifyURL
+  
+  CustomDomainURL:
+    Description: 'Custom Domain URL'
+    Value: !Sub 'https://${DomainName}'
+    Export:
+      Name: JaBaKi-CustomDomainURL
