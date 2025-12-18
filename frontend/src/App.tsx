@@ -4,7 +4,11 @@ import { useEffect, useState } from 'react'
 
 import imagesData from './data/images.json'
 import GoodToKnowPage from './pages/GoodToKnowPage'
+import RedStudioPage from './pages/RedStudioPage'
+import GreenStudioPage from './pages/GreenStudioPage'
+import GardenStudioPage from './pages/GardenStudioPage'
 import { getGoogleImageUrl } from './utils/googleImages'
+import { MetadataProvider } from './components/seo/MetadataManager'
 
 function App() {
   const { t, i18n } = useTranslation()
@@ -14,7 +18,8 @@ function App() {
   }
 
   return (
-    <div style={{ minHeight: '100vh' }}>
+    <MetadataProvider>
+      <div style={{ minHeight: '100vh' }}>
       <header style={{ 
         borderBottom: '1px solid #e2e8f0', 
         background: 'white', 
@@ -62,6 +67,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/good-to-know" element={<GoodToKnowPage />} />
+        <Route path="/red-studio" element={<RedStudioPage />} />
+        <Route path="/green-studio" element={<GreenStudioPage />} />
+        <Route path="/garden-studio" element={<GardenStudioPage />} />
       </Routes>
       
       <footer style={{
@@ -97,6 +105,7 @@ function App() {
         </div>
       </footer>
     </div>
+    </MetadataProvider>
   )
 }
 
