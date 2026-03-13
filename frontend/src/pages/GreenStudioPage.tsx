@@ -16,10 +16,10 @@ const GreenStudioPage: React.FC = () => {
           <div style={{ display: 'grid', gap: '2rem', gridTemplateColumns: '1fr 1fr', alignItems: 'start' }}>
             <div>
               <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-                {t('Modern Studio with Scenic Views')}
+                {t('Modern Studio with terrace')}
               </h2>
               <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
-                {t('Discover comfort and tranquility in our Green Studio, offering scenic views and modern amenities. Ideal for both short and extended stays near Amsterdam.')}
+                {t('Discover comfort and tranquility in our Green Studio, offering terrace and modern amenities. Ideal for both short and extended stays near Amsterdam.')}
               </p>
               <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
                 {t('Conveniently located in Hoofddorp with easy access to Schiphol Airport and Amsterdam city center. Perfect for leisure and business travelers.')}
@@ -29,7 +29,7 @@ const GreenStudioPage: React.FC = () => {
                 {t('Features')}
               </h3>
               <ul style={{ paddingLeft: '1.5rem', lineHeight: '1.8' }}>
-                <li>{t('Scenic views from windows')}</li>
+                <li>{t('Private terrace')}</li>
                 <li>{t('Modern and comfortable furnishing')}</li>
                 <li>{t('Near Schiphol Airport')}</li>
                 <li>{t('Quick access to Amsterdam')}</li>
