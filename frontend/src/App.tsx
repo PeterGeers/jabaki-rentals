@@ -120,7 +120,7 @@ const HomePage = () => {
           </h3>
           <div className="grid grid-3">
             <AccommodationCard id="gardenhouse" name={t('Garden House')} description={t('Cozy house with beautiful garden terrace')} />
-            <AccommodationCard id="green-studio" name={t('Green Studio')} description={t('Modern studio with scenic views')} />
+            <AccommodationCard id="green-studio" name={t('Green Studio')} description={t('Modern studio with terrace')} />
             <AccommodationCard id="red-studio" name={t('Red Studio')} description={t('Stylish studio with rooftop terrace')} />
           </div>
         </div>

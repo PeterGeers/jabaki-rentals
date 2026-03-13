@@ -66,7 +66,7 @@ const HomePage = () => {
             <AccommodationCard 
               id="green-studio"
               name="Green Studio" 
-              description="Modern studio with scenic views"
+              description="Modern studio with terrace"
             />
             <AccommodationCard 
               id="red-studio"
