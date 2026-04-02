@@ -156,9 +156,9 @@ describe('SitemapGenerator Property Tests', () => {
     const sitemap = generator.generateSitemap(entries)
     
     // Should contain all three studio routes
-    expect(sitemap).toContain('https://jabaki.nl/red-studio')
-    expect(sitemap).toContain('https://jabaki.nl/green-studio') 
-    expect(sitemap).toContain('https://jabaki.nl/garden-studio')
+    expect(sitemap).toContain('https://www.jabaki.nl/red-studio')
+    expect(sitemap).toContain('https://www.jabaki.nl/green-studio') 
+    expect(sitemap).toContain('https://www.jabaki.nl/garden-studio')
     
     // Should be valid XML format
     expect(sitemap).toMatch(/^<\?xml version="1\.0" encoding="UTF-8"\?>/)
@@ -189,9 +189,9 @@ describe('SitemapGenerator Unit Tests', () => {
     const sitemap = generator.generateSitemap(entries)
     
     // Test that all three specific studio URLs are present
-    expect(sitemap).toContain('<loc>https://jabaki.nl/red-studio</loc>')
-    expect(sitemap).toContain('<loc>https://jabaki.nl/green-studio</loc>')
-    expect(sitemap).toContain('<loc>https://jabaki.nl/garden-studio</loc>')
+    expect(sitemap).toContain('<loc>https://www.jabaki.nl/red-studio</loc>')
+    expect(sitemap).toContain('<loc>https://www.jabaki.nl/green-studio</loc>')
+    expect(sitemap).toContain('<loc>https://www.jabaki.nl/garden-studio</loc>')
   })
 
   /**

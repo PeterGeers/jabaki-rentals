@@ -39,7 +39,7 @@ describe('Studio Route Accessibility Tests', () => {
     expect(screen.getByRole('heading', { name: /Green Studio Hoofddorp/i })).toBeInTheDocument()
     
     // Check that the page contains studio-specific content
-    expect(screen.getByText('Modern Studio with Scenic Views')).toBeInTheDocument()
+    expect(screen.getByText('Modern Studio with terrace')).toBeInTheDocument()
   })
 
   it('should serve content at /garden-studio route', () => {

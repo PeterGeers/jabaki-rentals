@@ -99,7 +99,7 @@ describe('SEO Configuration Unit Tests', () => {
 
   describe('SEO Configuration', () => {
     it('should have correct base URL', () => {
-      expect(SEO_CONFIG.baseUrl).toBe('https://jabaki.nl')
+      expect(SEO_CONFIG.baseUrl).toBe('https://www.jabaki.nl')
     })
 
     it('should include all studio routes in prerender configuration', () => {

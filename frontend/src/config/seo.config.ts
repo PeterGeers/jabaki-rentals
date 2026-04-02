@@ -103,7 +103,7 @@ export const STUDIO_CONFIGS: StudioConfig[] = [
 
 // Main SEO configuration object
 export const SEO_CONFIG: SEOConfig = {
-  baseUrl: "https://jabaki.nl",
+  baseUrl: "https://www.jabaki.nl",
   studios: STUDIO_CONFIGS,
   sitemap: {
     outputPath: "/sitemap.xml",

@@ -60,7 +60,7 @@ describe('MetadataManager Property Tests', () => {
           expect(metadata.description.toLowerCase()).toContain(studio.toLowerCase())
           
           // Base URL should be configured correctly
-          expect(SEO_CONFIG.baseUrl).toBe('https://jabaki.nl')
+          expect(SEO_CONFIG.baseUrl).toBe('https://www.jabaki.nl')
           
           // Keywords should include studio-specific terms
           expect(metadata.keywords).toContain(`${studio} studio`)
@@ -108,7 +108,7 @@ describe('MetadataManager Property Tests', () => {
           const canonicalUrl = `${SEO_CONFIG.baseUrl}${pathname}`
           
           // Canonical URL should always start with the base URL
-          expect(canonicalUrl).toMatch(/^https:\/\/jabaki\.nl\//)
+          expect(canonicalUrl).toMatch(/^https:\/\/www\.jabaki\.nl\//)
           
           // Canonical URL should contain the pathname
           expect(canonicalUrl).toContain(pathname)
@@ -127,7 +127,7 @@ describe('MetadataManager Property Tests', () => {
           }
           
           // Base URL should be properly configured
-          expect(SEO_CONFIG.baseUrl).toBe('https://jabaki.nl')
+          expect(SEO_CONFIG.baseUrl).toBe('https://www.jabaki.nl')
         }
       ),
       { numRuns: 100 }
