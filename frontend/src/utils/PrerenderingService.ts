@@ -136,16 +136,6 @@ export class PrerenderingService {
   }
 
   /**
-   * Validates if a route follows the expected studio pattern
-   * @param route - Route to validate
-   * @returns True if route is a valid studio route
-   */
-  private isValidStudioRoute(route: string): boolean {
-    const validStudioRoutes = ['/red-studio', '/green-studio', '/garden-studio']
-    return validStudioRoutes.includes(route)
-  }
-
-  /**
    * Implements fallback mechanisms for prerendering failures
    * @param failedRoute - Route that failed to prerender
    * @returns Fallback result with success status and message
