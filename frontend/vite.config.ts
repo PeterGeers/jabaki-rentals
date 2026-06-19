@@ -4,13 +4,16 @@ import prerender from '@prerenderer/rollup-plugin'
 import { SEO_CONFIG } from './src/config/seo.config'
 import { createSitemapPlugin } from './src/utils/vite-sitemap-plugin'
 
+// Skip prerendering in CI environments (e.g., Amplify) where Puppeteer/Chrome is unavailable
+const isCI = process.env.CI === 'true' || !!process.env.AWS_APP_ID || !!process.env.AWS_BRANCH
+
 export default defineConfig({
   plugins: [
     react(),
-    // Sitemap generation plugin for SEO
+    // Sitemap generation plugin for SEO - always runs
     createSitemapPlugin(),
-    // Prerendering plugin for static HTML generation with enhanced error handling
-    prerender({
+    // Prerendering plugin for static HTML generation - skip in CI
+    ...(!isCI ? [prerender({
       routes: SEO_CONFIG.prerender.routes,
       renderer: '@prerenderer/renderer-puppeteer',
       rendererOptions: {
@@ -79,7 +82,7 @@ export default defineConfig({
           return renderedRoute
         }
       }
-    })
+    })] : []),
   ],
   server: {
     port: 3000,
