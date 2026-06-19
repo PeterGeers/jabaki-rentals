@@ -59,13 +59,28 @@ export function sitemapPlugin(options?: Partial<SitemapPluginOptions>): Plugin {
 
 /**
  * Helper function to create sitemap plugin with default SEO config
+ * Includes ALL pages (homepage, events, good-to-know) AND studio pages
  */
 export function createSitemapPlugin(): Plugin {
+  // Combine page entries and studio entries for a complete sitemap
+  const currentDate = new Date().toISOString().split('T')[0]
+  
+  const pageEntries: SitemapEntry[] = SEO_CONFIG.pages.map(page => ({
+    url: page.route,
+    lastmod: currentDate,
+    priority: page.priority,
+    changefreq: page.changefreq
+  }))
+
+  const studioEntries = SitemapGeneratorImpl.createEntriesFromStudios(SEO_CONFIG.studios)
+  
+  const allEntries = [...pageEntries, ...studioEntries]
+
   return sitemapPlugin({
     baseUrl: SEO_CONFIG.baseUrl,
     outputPath: SEO_CONFIG.sitemap.outputPath.startsWith('/') 
       ? SEO_CONFIG.sitemap.outputPath.slice(1) 
       : SEO_CONFIG.sitemap.outputPath,
-    entries: SitemapGeneratorImpl.createEntriesFromStudios(SEO_CONFIG.studios)
+    entries: allEntries
   })
 }

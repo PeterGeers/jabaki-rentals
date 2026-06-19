@@ -313,7 +313,9 @@ describe('Integration with SEO Configuration', () => {
     // Each SEO route should be processed
     SEO_CONFIG.prerender.routes.forEach(route => {
       const routePath = route.startsWith('/') ? route.slice(1) : route
-      const expectedPath = `dist/${routePath}/index.html`
+      const expectedPath = routePath === '' 
+        ? 'dist/index.html' 
+        : `dist/${routePath}/index.html`
       expect(validation.validFiles).toContain(expectedPath)
     })
   })

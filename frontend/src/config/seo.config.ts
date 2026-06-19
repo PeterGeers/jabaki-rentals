@@ -17,9 +17,18 @@ export interface StudioConfig {
   }
 }
 
+export interface PageConfig {
+  route: string
+  title: string
+  description: string
+  priority: number
+  changefreq: "daily" | "weekly" | "monthly"
+}
+
 export interface SEOConfig {
   baseUrl: string
   studios: StudioConfig[]
+  pages: PageConfig[]
   sitemap: {
     outputPath: string
     includeLastmod: boolean
@@ -101,10 +110,36 @@ export const STUDIO_CONFIGS: StudioConfig[] = [
   }
 ]
 
+// All pages that should be in the sitemap (non-studio pages)
+export const PAGE_CONFIGS: PageConfig[] = [
+  {
+    route: "/",
+    title: "Jabaki Hoofddorp | Studios nabij Schiphol & Amsterdam",
+    description: "Jabaki biedt comfortabele studios in Hoofddorp nabij Schiphol Airport en Amsterdam. Ideaal voor zakenreizigers en toeristen.",
+    priority: 1.0,
+    changefreq: "weekly"
+  },
+  {
+    route: "/events",
+    title: "Events & Attractions | Jabaki",
+    description: "Ontdek evenementen en attracties nabij Jabaki in Hoofddorp. Keukenhof, F1 Zandvoort, Amsterdam Dance Event en meer.",
+    priority: 0.6,
+    changefreq: "monthly"
+  },
+  {
+    route: "/good-to-know",
+    title: "Good to Know | Jabaki",
+    description: "Praktische informatie voor gasten van Jabaki in Hoofddorp. Transport, buurt, faciliteiten en tips.",
+    priority: 0.5,
+    changefreq: "monthly"
+  }
+]
+
 // Main SEO configuration object
 export const SEO_CONFIG: SEOConfig = {
   baseUrl: "https://www.jabaki.nl",
   studios: STUDIO_CONFIGS,
+  pages: PAGE_CONFIGS,
   sitemap: {
     outputPath: "/sitemap.xml",
     includeLastmod: true
@@ -112,7 +147,10 @@ export const SEO_CONFIG: SEOConfig = {
   prerender: {
     enabled: true,
     outputDir: "dist",
-    routes: STUDIO_CONFIGS.map(studio => studio.route)
+    routes: [
+      ...PAGE_CONFIGS.map(page => page.route),
+      ...STUDIO_CONFIGS.map(studio => studio.route)
+    ]
   }
 }
 

@@ -80,18 +80,20 @@ export class PrerenderingService {
     try {
       // Enhanced validation for each route configuration
       for (const route of this.config.routes) {
-        const routePath = route.startsWith('/') ? route.slice(1) : route
-        const expectedFilePath = `${outputPath}/${routePath}/index.html`
+        const routePath = route === '/' ? '' : (route.startsWith('/') ? route.slice(1) : route)
+        const expectedFilePath = routePath === '' 
+          ? `${outputPath}/index.html` 
+          : `${outputPath}/${routePath}/index.html`
         
         // Validate route configuration
-        if (!route || !routePath) {
+        if (!route) {
           result.isValid = false
           result.errors.push(`Invalid route configuration: ${route}`)
           continue
         }
 
         // Check if route follows expected pattern
-        if (!this.isValidStudioRoute(route)) {
+        if (!this.isValidRoute(route)) {
           result.warnings.push(`Route ${route} doesn't match expected studio pattern`)
         }
 
@@ -124,6 +126,16 @@ export class PrerenderingService {
   }
 
   /**
+   * Validates if a route follows the expected patterns (studio or page routes)
+   * @param route - Route to validate
+   * @returns True if route is a valid configured route
+   */
+  private isValidRoute(route: string): boolean {
+    const validRoutes = ['/', '/events', '/good-to-know', '/red-studio', '/green-studio', '/garden-studio']
+    return validRoutes.includes(route)
+  }
+
+  /**
    * Validates if a route follows the expected studio pattern
    * @param route - Route to validate
    * @returns True if route is a valid studio route
@@ -144,7 +156,7 @@ export class PrerenderingService {
       this.logBuildWarning(`Prerendering failed for route: ${failedRoute}`)
 
       // Determine fallback strategy based on route
-      if (this.isValidStudioRoute(failedRoute)) {
+      if (this.isValidRoute(failedRoute)) {
         return {
           success: true,
           message: `SPA routing will handle ${failedRoute} at runtime`,

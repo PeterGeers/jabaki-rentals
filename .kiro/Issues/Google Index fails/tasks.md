@@ -23,7 +23,7 @@
 
 ## Fix 5: Verify and redeploy
 
-- [ ] Run `npm run test:run` in frontend to verify no tests break after baseUrl change
-- [ ] Run `npm run build` to verify build succeeds
-- [ ] Deploy changes via `git push origin main`
+- [x] Run `npm run test:run` in frontend to verify no tests break after baseUrl change
+- [x] Run `npm run build` to verify build succeeds
+- [x] Deploy changes via `git push origin main`
 - [ ] Monitor Google Search Console over the next 1-2 weeks for improvements
