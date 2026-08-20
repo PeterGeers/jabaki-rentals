@@ -6,7 +6,7 @@
 		}
 	],
 	"settings": {
-		"terminal.integrated.cwd": "C:\\Users\\peter\\aws\\JaBaKi",
+		"terminal.integrated.cwd": "\\\\wsl.localhost\\Ubuntu\\home\\peter\\projects\\jabaki",
 		"files.defaultLanguage": "typescript",
 		"typescript.preferences.includePackageJsonAutoImports": "auto"
 	},

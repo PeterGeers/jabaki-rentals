@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Protect critical config files",
+      "description": "Prompts for extra scrutiny before modifying infrastructure and config files",
+      "trigger": "PreToolUse",
+      "matcher": "fs_write|str_replace",
+      "action": {
+        "type": "agent",
+        "prompt": "You are about to modify a file. If this file is a critical configuration file (vite.config.ts, vitest.config.ts, template.yaml, samconfig.toml, deploy.sh, deploy.ps1, or infrastructure/*.yaml), please verify: 1) The change is intentional and necessary, 2) It won't break the build or deployment pipeline, 3) The existing functionality is preserved. Proceed only if you're confident the change is safe."
+      }
+    }
+  ]
+}

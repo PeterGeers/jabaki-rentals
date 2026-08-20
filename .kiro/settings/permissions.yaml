@@ -1,0 +1,21 @@
+version: v1
+rules:
+  # Safe development commands — always allow
+  - capability: shell
+    match: ["npm run *", "npx vitest *", "npx eslint *", "tsc *", "node *"]
+    effect: allow
+
+  # Safe git read commands — always allow
+  - capability: shell
+    match: ["git status*", "git log*", "git diff*", "git branch*", "git show*"]
+    effect: allow
+
+  # Destructive commands — always deny
+  - capability: shell
+    match: ["rm -rf *", "git push --force*", "git reset --hard*", "sam delete*"]
+    effect: deny
+
+  # Deployment commands — require approval each time
+  - capability: shell
+    match: ["sam deploy*", "sam build*", "aws s3 *", "*.ps1"]
+    effect: ask

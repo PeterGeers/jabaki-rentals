@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Lint TypeScript on save",
+      "description": "Runs ESLint on TypeScript and TSX files after save to catch lint errors immediately",
+      "trigger": "PostFileSave",
+      "matcher": "\\.(ts|tsx)$",
+      "action": {
+        "type": "command",
+        "command": "npx eslint --no-warn-ignored {filePath}"
+      }
+    }
+  ]
+}

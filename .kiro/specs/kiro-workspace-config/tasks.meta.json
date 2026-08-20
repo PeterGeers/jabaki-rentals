@@ -1,0 +1,550 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "Create `.kiro/steering/project-overview.md`": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225470661
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225484676
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225655337
+      }
+    ],
+    "Document tech stack (React 18, Vite 7, TypeScript 5, Chakra UI, i18next)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225471172
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225659045
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225663337
+      }
+    ],
+    "Document architecture (Amplify frontend, SAM Lambda backend, Google Drive images)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225471335
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225667168
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225672226
+      }
+    ],
+    "Document directory structure and key file locations": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225471506
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225667932
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225672979
+      }
+    ],
+    "Document domain (jabaki.nl) and hosting setup": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225471657
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225668798
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225673704
+      }
+    ],
+    "Create `.kiro/steering/build-and-deploy.md`": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225471804
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225677757
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225792358
+      }
+    ],
+    "Reference GUARDRAILS.md via `#[[file:GUARDRAILS.md]]`": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225471960
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225795795
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225799374
+      }
+    ],
+    "Document all frontend npm scripts (dev, build, build:validate, test, test:run, lint, preview)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225472107
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225802997
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225806471
+      }
+    ],
+    "Document backend SAM commands (sam build, sam deploy)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225472251
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225809938
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225813511
+      }
+    ],
+    "Document the full testing workflow sequence": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225472386
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225817772
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225821212
+      }
+    ],
+    "Create `.kiro/steering/coding-standards.md`": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225472520
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225825189
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225975504
+      }
+    ],
+    "Document ESLint configuration (flat config, typescript-eslint, react-hooks)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225472653
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225979280
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225982806
+      }
+    ],
+    "Document file naming and organization conventions": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225472786
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225986441
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225991587
+      }
+    ],
+    "Document component patterns (Chakra UI, page structure, i18n)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225472912
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225987233
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225992369
+      }
+    ],
+    "Document image handling pattern (Google Drive API)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225473075
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225988057
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225993128
+      }
+    ],
+    "Create `.kiro/hooks/lint-on-save.json`": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225473220
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226002510
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226267190
+      }
+    ],
+    "Configure PostFileSave trigger with `\\.(ts|tsx)$` matcher": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225473359
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226282350
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226286130
+      }
+    ],
+    "Use command action running eslint on the saved file": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225473487
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226289623
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226293173
+      }
+    ],
+    "Verify JSON schema compliance": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228152490
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228156127
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228168942
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228173148
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228185177
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228189571
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228209683
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228213488
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228228312
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228232206
+      }
+    ],
+    "Create `.kiro/hooks/test-after-task.json`": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225473791
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226317696
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226451375
+      }
+    ],
+    "Configure PostTaskExec trigger (no matcher needed)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225473921
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226469508
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226473564
+      }
+    ],
+    "Use command action running `npx vitest run` from frontend directory": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225474061
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226477535
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226481680
+      }
+    ],
+    "Create `.kiro/hooks/protect-config.json`": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225474280
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787226503556
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787227861199
+      }
+    ],
+    "Configure PreToolUse trigger with `fs_write|str_replace` matcher": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225474426
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787227865041
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787227868848
+      }
+    ],
+    "Use agent action with prompt about verifying changes to critical config files": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225474562
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787227872553
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787227876489
+      }
+    ],
+    "Create `.kiro/settings/permissions.yaml`": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225474755
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787227893394
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228126153
+      }
+    ],
+    "Add allow rules for development commands (npm, vitest, eslint, tsc, node)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225474939
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228130303
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228136988
+      }
+    ],
+    "Add allow rules for safe git commands (status, log, diff, branch, show)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225475090
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228131058
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228137810
+      }
+    ],
+    "Add deny rules for destructive commands (rm -rf, force push, reset hard, sam delete)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225475257
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228131902
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228138672
+      }
+    ],
+    "Add ask rules for deployment commands (sam deploy, sam build, aws s3, .ps1 scripts)": [
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787225475432
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228132831
+      },
+      {
+        "executionId": "ca6e4068-23f1-44b0-a201-0150586bd4e5",
+        "chatSessionId": "sess_e3cfa1f2-a7f6-464b-b518-436fe04898a7",
+        "timestamp": 1787228139567
+      }
+    ]
+  }
+}
